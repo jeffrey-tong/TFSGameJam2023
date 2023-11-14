@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 6f;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private BoxCollider2D boxCollider2D;
     [SerializeField] private Camera cam;
     private float horizontalInput;
     private float verticalInput;
@@ -48,5 +49,4 @@ public class PlayerController : MonoBehaviour
     {
 
     }
-
 }
