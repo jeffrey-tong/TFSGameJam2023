@@ -12,13 +12,20 @@ public class RangedEnemy : MonoBehaviour
     public float attackSpeed = 1.0f;
     private bool isAttacking = false;
     private bool canAttack = true;
-    public float projectileSpeed = 10.0f;
 
+    private Rigidbody2D rb;
     private Transform player;
+
+    [Header("Bullet Data")]
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject projectileSpawnPoint;
+    [SerializeField] private float projectileSpeed = 10.0f;
+    [SerializeField] private float projectileLifeTime = 4.0f;
 
     private void Awake()
     {
         circleCollider2D = GetComponent<CircleCollider2D>();
+        rb = GetComponent<Rigidbody2D>();   
     }
 
     // Start is called before the first frame update
@@ -50,11 +57,20 @@ public class RangedEnemy : MonoBehaviour
         {
             projectileSpeed = 10.0f;
         }
+        if (projectileLifeTime <= 0)
+        {
+            projectileLifeTime = 4.0f;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 direction = player.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         if (!isAttacking)
         {
             MoveTowardsPlayer();
@@ -78,6 +94,7 @@ public class RangedEnemy : MonoBehaviour
                 StartCoroutine(AttackCooldown());
             }
         }
+        
     }
 
     void MoveTowardsPlayer()
@@ -92,7 +109,10 @@ public class RangedEnemy : MonoBehaviour
 
     void StartAttack()
     {
-
+        isAttacking = true;
+        GameObject projectileInstance = Instantiate(projectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+        Vector2 shootDirection = new Vector2(Mathf.Cos(rb.rotation * Mathf.Deg2Rad), Mathf.Sin(rb.rotation * Mathf.Deg2Rad));
+        projectileInstance.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;
     }
 
     System.Collections.IEnumerator AttackCooldown()
