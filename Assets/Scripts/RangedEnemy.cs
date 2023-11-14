@@ -20,7 +20,6 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private GameObject projectileSpawnPoint;
     [SerializeField] private float projectileSpeed = 10.0f;
-    [SerializeField] private float projectileLifeTime = 4.0f;
 
     private void Awake()
     {
@@ -56,10 +55,6 @@ public class RangedEnemy : MonoBehaviour
         if(projectileSpeed <= 0)
         {
             projectileSpeed = 10.0f;
-        }
-        if (projectileLifeTime <= 0)
-        {
-            projectileLifeTime = 4.0f;
         }
     }
 
