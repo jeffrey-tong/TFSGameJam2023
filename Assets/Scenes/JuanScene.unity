@@ -1062,38 +1062,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1891301255 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3470538999109438235, guid: 8912a249b9c4a184fae632e14f3b72ae, type: 3}
-  m_PrefabInstance: {fileID: 7431885349422619814}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1891301259
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891301255}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &2046378162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,6 +1319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangedEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8254919177770880037, guid: 8912a249b9c4a184fae632e14f3b72ae, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 6069726061745670412, guid: ea43f5f5b763de34494b6fc48142f6f8, type: 3}
     - target: {fileID: 9188445808875918254, guid: 8912a249b9c4a184fae632e14f3b72ae, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1398,8 +1370,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3470538999109438235, guid: 8912a249b9c4a184fae632e14f3b72ae, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 1891301259}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8912a249b9c4a184fae632e14f3b72ae, type: 3}
