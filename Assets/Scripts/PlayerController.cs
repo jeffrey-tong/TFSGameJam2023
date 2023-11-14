@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private BoxCollider2D boxCollider2D;
     [SerializeField] private Camera cam;
     [SerializeField] private Health health;
 
@@ -172,5 +173,4 @@ public class PlayerController : MonoBehaviour
     {
         slider.value = curenthealth;
     }
-
 }
