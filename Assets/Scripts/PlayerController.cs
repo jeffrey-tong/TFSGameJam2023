@@ -17,6 +17,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject dimensionMap2;
     [SerializeField] private bool isAnotherDimension;
 
+    [Header("Bullet Data")]
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject projectileSpawnPoint;
+    [SerializeField] private float projectileSpeed;
+    [SerializeField] private float projectileLifeTime;
+
+    [Header("Bullet Data")]
+
     private float horizontalInput;
     private float verticalInput;
     private Vector2 playerMovement;
@@ -36,6 +44,12 @@ public class PlayerController : MonoBehaviour
 
         if (fireRate <= 0)
             fireRate = 1.0f;
+
+        if (projectileSpeed <= 0)
+            projectileSpeed = 8.0f;
+
+        if (projectileLifeTime <= 0)
+            projectileLifeTime = 2.0f;
 
         lastBulletFiredTime = 1.0f;
         isAnotherDimension = false;
@@ -92,8 +106,10 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-
-        Debug.Log("shootiiiinnngggg");
+        GameObject projectileInstance =  Instantiate(projectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+        Vector2 shootDirection = new Vector2(Mathf.Cos(rb.rotation * Mathf.Deg2Rad), Mathf.Sin(rb.rotation * Mathf.Deg2Rad));
+        projectileInstance.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;
+        Destroy(projectileInstance, projectileLifeTime);
     }
 
     private void SplitDimension()
