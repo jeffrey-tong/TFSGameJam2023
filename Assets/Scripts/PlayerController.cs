@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Camera cam;
+    [SerializeField] private Health health;
 
     [Header("Player Data")]
     [SerializeField] private float playerSpeed;
@@ -23,7 +25,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float projectileLifeTime;
 
-    [Header("Bullet Data")]
+    [Header("Player Health")]
+    [SerializeField] private Slider slider;
+    [SerializeField] private Shake shake;
 
     private float horizontalInput;
     private float verticalInput;
@@ -33,11 +37,17 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        health.OnTakeDamage += HandleTakeDamage;
+        health.OnDie += HandleDie;
+
         if (rb == null) 
             rb = GetComponent<Rigidbody2D>();
 
         if (cam == null) 
             cam = Camera.main;
+
+        if (health == null)
+            health = GetComponent<Health>();
 
         if (playerSpeed <= 0) 
             playerSpeed = 6.0f;
@@ -53,9 +63,16 @@ public class PlayerController : MonoBehaviour
 
         lastBulletFiredTime = 1.0f;
         isAnotherDimension = false;
+
     }
 
-    private void Update()
+    private void OnDisable()
+    {
+        health.OnTakeDamage -= HandleTakeDamage;
+        health.OnDie -= HandleDie;
+    }
+
+        private void Update()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
@@ -75,10 +92,9 @@ public class PlayerController : MonoBehaviour
         // Split Dimension
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
-            SplitDimension();
+            StartCoroutine(DimensionDelay());
         }
 
-        
     }
 
     private void FixedUpdate()
@@ -128,9 +144,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Health()
+    private IEnumerator DimensionDelay()
+    {
+        shake.DimensionShake();
+
+        yield return new WaitForSeconds(0.7f);
+
+        SplitDimension();
+
+    }
+
+
+    private void HandleTakeDamage()
+    {
+        UpdateHealthBar(health.health);
+        shake.CamShake();
+        // spawn particles
+        // shake camera
+    }
+
+    private void HandleDie()
     {
 
+    }
+
+    public void UpdateHealthBar(float curenthealth)
+    {
+        slider.value = curenthealth;
     }
 
 }

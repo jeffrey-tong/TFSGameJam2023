@@ -40,9 +40,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8992415592393908819}
-  - component: {fileID: 7800863302945657468}
   - component: {fileID: 7558450197511531632}
   - component: {fileID: 368749843344328254}
+  - component: {fileID: 7800863302945657468}
+  - component: {fileID: 672403302721338014}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -65,31 +66,8 @@ Transform:
   - {fileID: 7159736993713877309}
   - {fileID: 6929909429714780186}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7800863302945657468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903209541053391255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c0a71c7ff00d21438ef8a82a0c81c35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 7558450197511531632}
-  cam: {fileID: 0}
-  playerSpeed: 8
-  fireRate: 1
-  dimensionMap1: {fileID: 0}
-  dimensionMap2: {fileID: 0}
-  isAnotherDimension: 0
-  projectilePrefab: {fileID: 6069726061745670412, guid: b651f1dfb42f76a4b999c4b331bdc7a1, type: 3}
-  projectileSpawnPoint: {fileID: 10692839508466644}
-  projectileSpeed: 18
-  projectileLifeTime: 2
 --- !u!50 &7558450197511531632
 Rigidbody2D:
   serializedVersion: 4
@@ -162,6 +140,44 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4547238, y: 1.0313603}
   m_EdgeRadius: 0
+--- !u!114 &7800863302945657468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903209541053391255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0a71c7ff00d21438ef8a82a0c81c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 7558450197511531632}
+  cam: {fileID: 0}
+  health: {fileID: 0}
+  playerSpeed: 8
+  fireRate: 1
+  dimensionMap1: {fileID: 0}
+  dimensionMap2: {fileID: 0}
+  isAnotherDimension: 0
+  projectilePrefab: {fileID: 6069726061745670412, guid: b651f1dfb42f76a4b999c4b331bdc7a1, type: 3}
+  projectileSpawnPoint: {fileID: 10692839508466644}
+  projectileSpeed: 18
+  projectileLifeTime: 2
+--- !u!114 &672403302721338014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903209541053391255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0046809ba4bd7414aae6d0cf4ebc29cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  health: 0
 --- !u!1 &4748845141496083204
 GameObject:
   m_ObjectHideFlags: 0
