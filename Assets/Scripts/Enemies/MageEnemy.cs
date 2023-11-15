@@ -7,7 +7,7 @@ public class MageEnemy : MonoBehaviour
     private CircleCollider2D circleCollider2D;
     public float moveSpeed = 2f;
     public float attackRange = 15.0f;
-    public float attackRangeBuffer = 1.0f;
+    public float attackRangeBuffer = 4.0f;
     public float attackSpeed = 4.0f;
     private bool isAttacking = false;
     private bool canAttack = true;
@@ -48,7 +48,7 @@ public class MageEnemy : MonoBehaviour
         }
         if (attackRangeBuffer <= 0)
         {
-            attackRangeBuffer = 1.0f;
+            attackRangeBuffer = 4.0f;
         }
         if (attackSpeed <= 0)
         {
@@ -68,28 +68,26 @@ public class MageEnemy : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        if (!isAttacking)
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance > attackRange)
         {
-            float distance = Vector3.Distance(transform.position, player.position);
-            if (distance > attackRange + attackRangeBuffer)
+            MoveTowardsPlayer();
+        }
+        else if (distance < attackRange - attackRangeBuffer)
+        {
+            MoveAwayFromPlayer();
+        }
+
+        if(distance < attackRange)
+        {
+            if (canAttack)
             {
-                MoveTowardsPlayer();
-                if (canAttack)
-                {
-                    StartAttack();
-                    StartCoroutine(AttackCooldown());
-                }
-            }
-            else if (distance < attackRange + attackRangeBuffer)
-            {
-                MoveAwayFromPlayer();
-                if (canAttack)
-                {
-                    StartAttack();
-                    StartCoroutine(AttackCooldown());
-                }
+                StartAttack();
+                StartCoroutine(AttackCooldown());
             }
         }
+        
+        
     }
 
     void MoveTowardsPlayer()
@@ -106,13 +104,12 @@ public class MageEnemy : MonoBehaviour
     {
         Vector3 directionToPlayer = transform.position - player.position;
         directionToPlayer.Normalize();
-        Vector3 targetPosition = transform.position + directionToPlayer * moveSpeed * Time.deltaTime;
+        transform.position = transform.position + directionToPlayer * moveSpeed * Time.deltaTime;
     }
 
 
     void StartAttack()
     {
-        isAttacking = true;
         for(int i=0; i<projectileSpawnPoints.Length; i++)
         {
             GameObject projectileInstance = Instantiate(projectilePrefab, projectileSpawnPoints[i].transform.position, projectileSpawnPoints[i].transform.rotation);
@@ -126,7 +123,6 @@ public class MageEnemy : MonoBehaviour
         canAttack = false;
         yield return new WaitForSeconds(attackSpeed);
         canAttack = true;
-        isAttacking = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
