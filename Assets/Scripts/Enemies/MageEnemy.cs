@@ -9,7 +9,6 @@ public class MageEnemy : MonoBehaviour
     public float attackRange = 15.0f;
     public float attackRangeBuffer = 4.0f;
     public float attackSpeed = 4.0f;
-    private bool isAttacking = false;
     private bool canAttack = true;
     private Bounds enemyBounds;
 

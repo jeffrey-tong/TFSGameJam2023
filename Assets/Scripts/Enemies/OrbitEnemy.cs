@@ -8,7 +8,6 @@ public class OrbitEnemy : MonoBehaviour
     public float moveSpeed = 15f;
     public float orbitRadius = 10f;
     public float attackSpeed = 1.0f;
-    private bool isAttacking = false;
     private bool canAttack = true;
 
     private Rigidbody2D rb;
