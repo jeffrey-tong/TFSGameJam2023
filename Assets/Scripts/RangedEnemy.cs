@@ -17,11 +17,12 @@ public class RangedEnemy : MonoBehaviour
     private Transform player;
 
     [Header("Bullet Data")]
-    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject redProjectilePrefab;
+    [SerializeField] private GameObject blueProjectilePrefab;
     [SerializeField] private GameObject projectileSpawnPoint;
     [SerializeField] private float projectileSpeed = 10.0f;
-    private SpriteRenderer spriteRenderer;
-
+  
+    private GameObject currentProjectilePrefab;
     private int currentLayer;
 
     private void Awake()
@@ -35,11 +36,13 @@ public class RangedEnemy : MonoBehaviour
         {
             gameObject.layer = LayerMask.NameToLayer("BlueDimension");
             currentLayer = gameObject.layer;
+            currentProjectilePrefab = blueProjectilePrefab;
         }
         else if (randomLayerIndex == 1 )
         {
             gameObject.layer = LayerMask.NameToLayer("RedDimension");
             currentLayer = gameObject.layer;
+            currentProjectilePrefab = redProjectilePrefab;
         }
 
     }
@@ -122,7 +125,7 @@ public class RangedEnemy : MonoBehaviour
     void StartAttack()
     {
         isAttacking = true;
-        GameObject projectileInstance = Instantiate(projectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+        GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
         //Set projectile layer = to enemy layer
         projectileInstance.layer = currentLayer;
 
