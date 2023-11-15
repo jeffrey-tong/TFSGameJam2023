@@ -7,6 +7,7 @@ public class MeleeEnemy : MonoBehaviour
     private CircleCollider2D circleCollider2D;
     public float moveSpeed = 2f;
     private Transform player;
+    private EnemySpawner spawner;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class MeleeEnemy : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        spawner = GameObject.FindObjectOfType<EnemySpawner>();
         if(player == null){
             Debug.Log("Player not found");
         }
@@ -44,6 +46,7 @@ public class MeleeEnemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             //do damage
+            spawner.EnemyDestroyed();
             Destroy(gameObject);
         }
     }
