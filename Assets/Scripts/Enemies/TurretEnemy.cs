@@ -10,14 +10,33 @@ public class TurretEnemy : MonoBehaviour
     private bool canAttack = true;
 
     [Header("Bullet Data")]
-    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject redProjectilePrefab;
+    [SerializeField] private GameObject blueProjectilePrefab;
     [SerializeField] private GameObject projectileSpawnPoint;
     [SerializeField] private float projectileSpeed = 15.0f;
+
+    private GameObject currentProjectilePrefab;
+    private int currentLayer;
 
     private void Awake()
     {
         circleCollider2D = GetComponent<CircleCollider2D>();
-        rb = GetComponent<Rigidbody2D>();   
+        rb = GetComponent<Rigidbody2D>();
+
+        // Place enemy in random layer
+        int randomLayerIndex = Random.Range(0, 2);
+        if (randomLayerIndex == 0)
+        {
+            gameObject.layer = LayerMask.NameToLayer("BlueDimension");
+            currentLayer = gameObject.layer;
+            currentProjectilePrefab = blueProjectilePrefab;
+        }
+        else if (randomLayerIndex == 1)
+        {
+            gameObject.layer = LayerMask.NameToLayer("RedDimension");
+            currentLayer = gameObject.layer;
+            currentProjectilePrefab = redProjectilePrefab;
+        }
     }
 
     // Start is called before the first frame update
@@ -50,7 +69,10 @@ public class TurretEnemy : MonoBehaviour
 
     void StartAttack()
     {
-        GameObject projectileInstance = Instantiate(projectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+        GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+        //Set projectile layer = to enemy layer
+        projectileInstance.layer = currentLayer;
+
         Vector2 shootDirection = new Vector2(Mathf.Cos(rb.rotation * Mathf.Deg2Rad), Mathf.Sin(rb.rotation * Mathf.Deg2Rad));
         projectileInstance.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;
     }

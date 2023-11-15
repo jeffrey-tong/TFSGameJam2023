@@ -16,9 +16,13 @@ public class MageEnemy : MonoBehaviour
     private Transform player;
 
     [Header("Bullet Data")]
-    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject redProjectilePrefab;
+    [SerializeField] private GameObject blueProjectilePrefab;
     [SerializeField] private GameObject[] projectileSpawnPoints;
     [SerializeField] private float projectileSpeed = 5.0f;
+
+    private GameObject currentProjectilePrefab;
+    private int currentLayer;
 
     private void Awake()
     {
@@ -26,6 +30,22 @@ public class MageEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         enemyBounds = GetComponentInChildren<SpriteRenderer>().bounds;
+
+        // Place enemy in random layer
+        int randomLayerIndex = Random.Range(0, 2);
+        if (randomLayerIndex == 0)
+        {
+            gameObject.layer = LayerMask.NameToLayer("BlueDimension");
+            currentLayer = gameObject.layer;
+            currentProjectilePrefab = blueProjectilePrefab;
+        }
+        else if (randomLayerIndex == 1)
+        {
+            gameObject.layer = LayerMask.NameToLayer("RedDimension");
+            currentLayer = gameObject.layer;
+            currentProjectilePrefab = redProjectilePrefab;
+        }
+
     }
 
     // Start is called before the first frame update
@@ -111,7 +131,10 @@ public class MageEnemy : MonoBehaviour
     {
         for(int i=0; i<projectileSpawnPoints.Length; i++)
         {
-            GameObject projectileInstance = Instantiate(projectilePrefab, projectileSpawnPoints[i].transform.position, projectileSpawnPoints[i].transform.rotation);
+            GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoints[i].transform.position, projectileSpawnPoints[i].transform.rotation);
+            //Set projectile layer = to enemy layer
+            projectileInstance.layer = currentLayer;
+
             Vector2 shootDirection = new Vector2(Mathf.Cos(rb.rotation * Mathf.Deg2Rad), Mathf.Sin(rb.rotation * Mathf.Deg2Rad));
             projectileInstance.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;
         }

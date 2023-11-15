@@ -8,10 +8,24 @@ public class MeleeEnemy : MonoBehaviour
     public float moveSpeed = 2f;
     private Transform player;
     private EnemySpawner spawner;
+    private int currentLayer;
 
     private void Awake()
     {
-        circleCollider2D = GetComponent<CircleCollider2D>();   
+        circleCollider2D = GetComponent<CircleCollider2D>();
+
+        // Place enemy in random layer
+        int randomLayerIndex = Random.Range(0, 2);
+        if (randomLayerIndex == 0)
+        {
+            gameObject.layer = LayerMask.NameToLayer("BlueDimension");
+            currentLayer = gameObject.layer;
+        }
+        else if (randomLayerIndex == 1)
+        {
+            gameObject.layer = LayerMask.NameToLayer("RedDimension");
+            currentLayer = gameObject.layer;
+        }
     }
 
     // Start is called before the first frame update
