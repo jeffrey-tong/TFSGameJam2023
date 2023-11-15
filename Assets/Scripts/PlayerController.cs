@@ -30,15 +30,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private Shake shake;
 
-    [Header("Layers")]
+    [Header("Dimensions Data")]
     [SerializeField] private LayerMask redDimensionLayer;
     [SerializeField] private LayerMask blueDimensionLayer;
+    [SerializeField] private float dimensionSwitchRate;
+    [SerializeField] private Slider dimensionSlider;
 
     private float horizontalInput;
     private float verticalInput;
     private Vector2 playerMovement;
     private Vector2 mousePos;
     private float lastBulletFiredTime;
+    private float dimensionSwitchCooldownTime;
 
     private void Start()
     {
@@ -66,8 +69,13 @@ public class PlayerController : MonoBehaviour
         if (projectileLifeTime <= 0)
             projectileLifeTime = 2.0f;
 
+        if (dimensionSwitchRate <= 0)
+            dimensionSwitchRate = 3.0f;
+
         lastBulletFiredTime = 1.0f;
         isAnotherDimension = false;
+
+        dimensionSwitchCooldownTime = 3.0f;
 
     }
 
@@ -77,7 +85,7 @@ public class PlayerController : MonoBehaviour
         health.OnDie -= HandleDie;
     }
 
-        private void Update()
+    private void Update()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
@@ -85,6 +93,7 @@ public class PlayerController : MonoBehaviour
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         lastBulletFiredTime += Time.deltaTime;
+        dimensionSwitchCooldownTime += Time.deltaTime;
 
         // Fire
         if (Input.GetButtonDown("Fire1") && lastBulletFiredTime >= fireRate)
@@ -95,9 +104,11 @@ public class PlayerController : MonoBehaviour
         }
 
         // Split Dimension
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space) && dimensionSwitchCooldownTime >= dimensionSwitchRate) 
         {
             StartCoroutine(DimensionDelay());
+
+            dimensionSwitchCooldownTime = 0.0f;
         }
 
     }
@@ -105,6 +116,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        UpdateDimensionBar(dimensionSwitchCooldownTime);
     }
 
     private void Move()
@@ -151,6 +163,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
     private IEnumerator DimensionDelay()
     {
         shake.DimensionShake();
@@ -167,7 +181,7 @@ public class PlayerController : MonoBehaviour
         UpdateHealthBar(health.health);
         shake.CamShake();
         // spawn particles
-        // shake camera
+      
     }
 
     private void HandleDie()
@@ -178,5 +192,10 @@ public class PlayerController : MonoBehaviour
     public void UpdateHealthBar(float curenthealth)
     {
         slider.value = curenthealth;
+    }
+
+    private void UpdateDimensionBar(float currentTime)
+    {
+        dimensionSlider.value = currentTime;
     }
 }
