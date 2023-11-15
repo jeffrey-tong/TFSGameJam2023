@@ -114,10 +114,9 @@ MonoBehaviour:
   attackRange: 10
   attackRangeBuffer: 1
   attackSpeed: 1
-  projectilePrefab: {fileID: 6069726061745670412, guid: b651f1dfb42f76a4b999c4b331bdc7a1, type: 3}
+  projectilePrefab: {fileID: 6069726061745670412, guid: ea43f5f5b763de34494b6fc48142f6f8, type: 3}
   projectileSpawnPoint: {fileID: 7264862181425218448}
   projectileSpeed: 10
-  projectileLifeTime: 0
 --- !u!1 &4241591296470357480
 GameObject:
   m_ObjectHideFlags: 0

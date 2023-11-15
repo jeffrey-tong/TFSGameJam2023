@@ -20,11 +20,28 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private GameObject projectileSpawnPoint;
     [SerializeField] private float projectileSpeed = 10.0f;
+    private SpriteRenderer spriteRenderer;
+
+    private int currentLayer;
 
     private void Awake()
     {
         circleCollider2D = GetComponent<CircleCollider2D>();
-        rb = GetComponent<Rigidbody2D>();   
+        rb = GetComponent<Rigidbody2D>();
+
+        int randomLayerIndex = Random.Range(0, 2);
+
+        if (randomLayerIndex == 0 )
+        {
+            gameObject.layer = LayerMask.NameToLayer("BlueDimension");
+            currentLayer = gameObject.layer;
+        }
+        else if (randomLayerIndex == 1 )
+        {
+            gameObject.layer = LayerMask.NameToLayer("RedDimension");
+            currentLayer = gameObject.layer;
+        }
+
     }
 
     // Start is called before the first frame update
@@ -106,6 +123,9 @@ public class RangedEnemy : MonoBehaviour
     {
         isAttacking = true;
         GameObject projectileInstance = Instantiate(projectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+        //Set projectile layer = to enemy layer
+        projectileInstance.layer = currentLayer;
+
         Vector2 shootDirection = new Vector2(Mathf.Cos(rb.rotation * Mathf.Deg2Rad), Mathf.Sin(rb.rotation * Mathf.Deg2Rad));
         projectileInstance.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;
     }

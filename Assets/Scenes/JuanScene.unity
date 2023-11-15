@@ -1173,9 +1173,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 10692839508466644, guid: 853ddd4cbfa9e454197a2476357da008, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 903209541053391255, guid: 853ddd4cbfa9e454197a2476357da008, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 903209541053391255, guid: 853ddd4cbfa9e454197a2476357da008, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748845141496083204, guid: 853ddd4cbfa9e454197a2476357da008, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7800863302945657468, guid: 853ddd4cbfa9e454197a2476357da008, type: 3}
       propertyPath: cam
@@ -1197,6 +1209,14 @@ PrefabInstance:
       propertyPath: dimensionMap2
       value: 
       objectReference: {fileID: 548018070}
+    - target: {fileID: 7800863302945657468, guid: 853ddd4cbfa9e454197a2476357da008, type: 3}
+      propertyPath: redDimensionLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800863302945657468, guid: 853ddd4cbfa9e454197a2476357da008, type: 3}
+      propertyPath: blueDimensionLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 8992415592393908819, guid: 853ddd4cbfa9e454197a2476357da008, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1369,7 +1389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6174109994527889034, guid: a48aab16704b52d49b2fc37d622dd10c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8930385501444176058, guid: a48aab16704b52d49b2fc37d622dd10c, type: 3}
       propertyPath: enemyPrefabs.Array.size
@@ -1398,7 +1418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3470538999109438235, guid: 8912a249b9c4a184fae632e14f3b72ae, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8254919177770880037, guid: 8912a249b9c4a184fae632e14f3b72ae, type: 3}
       propertyPath: projectilePrefab
