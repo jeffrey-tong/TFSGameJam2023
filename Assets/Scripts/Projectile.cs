@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float projectileLifetime = 4.0f;
+    public int damage = 10;
 
     private void Start()
     {
@@ -20,6 +21,8 @@ public class Projectile : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Health playerHealth = collision.GetComponent<Health>();
+            playerHealth.DealDamage(damage);
             Destroy(gameObject);
         }
     }

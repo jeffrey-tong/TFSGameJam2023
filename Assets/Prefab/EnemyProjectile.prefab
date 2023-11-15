@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b46c4e10af807b48aa1020f8c295d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileLifetime: 4
+  damage: 10
 --- !u!58 &6697257303966622608
 CircleCollider2D:
   m_ObjectHideFlags: 0

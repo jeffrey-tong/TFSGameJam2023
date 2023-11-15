@@ -1367,6 +1367,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemiesSpawnerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6174109994527889034, guid: a48aab16704b52d49b2fc37d622dd10c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8930385501444176058, guid: a48aab16704b52d49b2fc37d622dd10c, type: 3}
       propertyPath: enemyPrefabs.Array.size
       value: 2
@@ -1394,7 +1398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3470538999109438235, guid: 8912a249b9c4a184fae632e14f3b72ae, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8254919177770880037, guid: 8912a249b9c4a184fae632e14f3b72ae, type: 3}
       propertyPath: projectilePrefab
