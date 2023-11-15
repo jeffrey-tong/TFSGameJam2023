@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private Shake shake;
 
+    [Header("Layers")]
+    [SerializeField] private LayerMask redDimensionLayer;
+    [SerializeField] private LayerMask blueDimensionLayer;
+
     private float horizontalInput;
     private float verticalInput;
     private Vector2 playerMovement;
@@ -135,12 +139,14 @@ public class PlayerController : MonoBehaviour
         { 
             dimensionMap1.SetActive(false);
             dimensionMap2.SetActive(true);
+            gameObject.layer = LayerMask.NameToLayer("BlueDimension");
             isAnotherDimension = true;
         }
         else
         {
             dimensionMap1.SetActive(true);
             dimensionMap2.SetActive(false);
+            gameObject.layer = LayerMask.NameToLayer("RedDimension");
             isAnotherDimension = false;
         }
     }
