@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
     {
         if (playButton)
         {
-            playButton.onClick.AddListener(() => Invoke("StartGame", 1f));
+            playButton.onClick.AddListener(() => Invoke("StartGame", 0.5f));
             playButton.onClick.AddListener(() => AudioManager.Instance.Play("Select"));
         }
 
@@ -79,18 +79,14 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void LoadGame()
-    {
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene(1);
     }
 
     private void GameSettings()
     {
         AudioManager.Instance.Play("Select");
         settingsPanel.SetActive(true);
+        isActive = true;
     }
 
     private void BackToPauseMenu()
@@ -112,7 +108,7 @@ public class UIManager : MonoBehaviour
 
     public void GameOver()
     {
-        SceneManager.LoadScene("GameOver");
+        // to add
     }
 
     public void Credits()
@@ -129,6 +125,7 @@ public class UIManager : MonoBehaviour
         {
             AudioManager.Instance.Play("Select");
             creditsPanel.SetActive(false);
+            settingsPanel.SetActive(false);
             isActive = false;
         }
     }
@@ -137,7 +134,7 @@ public class UIManager : MonoBehaviour
     {
         isPaused = !isPaused;
         pausePanel.SetActive(isPaused);
-        scorePanel.SetActive(false);
+        //scorePanel.SetActive(false);
 
         if (isPaused)
         {
@@ -149,7 +146,7 @@ public class UIManager : MonoBehaviour
         {
             AudioManager.Instance.Play("Select");
             Time.timeScale = 1;
-            scorePanel.SetActive(true);
+            //scorePanel.SetActive(true);
             UnpauseBackgorundMusic();
         }
     }

@@ -653,7 +653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Play
+  m_text: 'Back
 
 '
   m_isRightToLeft: 0
@@ -815,7 +815,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 800088605}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1937642898}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: GoBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &800088605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -937,7 +949,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 879275764}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1937642898}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: GoBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &879275764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,7 +1385,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Play
+  m_text: 'Back
 
 '
   m_isRightToLeft: 0
@@ -1591,6 +1615,7 @@ GameObject:
   - component: {fileID: 1937642893}
   - component: {fileID: 1937642897}
   - component: {fileID: 1937642898}
+  - component: {fileID: 1937642899}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1810,6 +1835,26 @@ MonoBehaviour:
   scorePanel: {fileID: 0}
   backgroundMusic: {fileID: 0}
   isDead: 0
+--- !u!114 &1937642899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937642892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e90acbe57a269042b6fe610f5e91a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Select
+    clip: {fileID: 8300000, guid: d5edf3ef48465f748acad1a706d8b4f9, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    output: {fileID: 0}
+    source: {fileID: 0}
 --- !u!1 &2065342866
 GameObject:
   m_ObjectHideFlags: 0
