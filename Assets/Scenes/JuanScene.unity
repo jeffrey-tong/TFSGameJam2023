@@ -1699,10 +1699,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 548018070}
     - target: {fileID: 7800863302945657468, guid: 853ddd4cbfa9e454197a2476357da008, type: 3}
-      propertyPath: rotationSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7800863302945657468, guid: 853ddd4cbfa9e454197a2476357da008, type: 3}
       propertyPath: dimensionSlider
       value: 
       objectReference: {fileID: 2131562496}

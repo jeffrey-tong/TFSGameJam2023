@@ -159,6 +159,7 @@ MonoBehaviour:
   health: {fileID: 672403302721338014}
   playerSpeed: 8
   fireRate: 0.5
+  rotationSpeed: 20
   dimensionMap1: {fileID: 0}
   dimensionMap2: {fileID: 0}
   isAnotherDimension: 0
