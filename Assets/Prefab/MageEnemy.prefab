@@ -166,7 +166,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -363,7 +363,7 @@ Transform:
   - {fileID: 7812166551208628733}
   - {fileID: 911842944837636395}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &827771191912313580
 CircleCollider2D:
@@ -443,8 +443,8 @@ MonoBehaviour:
   attackRange: 15
   attackRangeBuffer: 1
   attackSpeed: 4
-  redProjectilePrefab: {fileID: 2471528840375977880, guid: 207f7760d514d4c0782ecf0898c76679, type: 3}
-  blueProjectilePrefab: {fileID: 8812811745457465511, guid: 1220d3a9c808d479abf62cf5ca5274fd, type: 3}
+  greenProjectilePrefab: {fileID: 8812811745457465511, guid: 1220d3a9c808d479abf62cf5ca5274fd, type: 3}
+  purpleProjectilePrefab: {fileID: 2471528840375977880, guid: 207f7760d514d4c0782ecf0898c76679, type: 3}
   projectileSpawnPoints:
   - {fileID: 5685849866059493824}
   - {fileID: 1480398893361309134}

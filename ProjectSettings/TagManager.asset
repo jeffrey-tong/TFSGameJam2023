@@ -14,8 +14,8 @@ TagManager:
   - UI
   - Enemy
   - Player
-  - RedDimension
-  - BlueDimension
+  - GreenDimension
+  - PurpleDimension
   - 
   - PostProcessing
   - 
@@ -41,4 +41,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: 1
+    uniqueID: 362841977
+    locked: 0
+  - name: 2
+    uniqueID: 1332510403
     locked: 0

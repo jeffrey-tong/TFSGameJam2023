@@ -114,8 +114,8 @@ MonoBehaviour:
   attackRange: 10
   attackRangeBuffer: 1
   attackSpeed: 1
-  redProjectilePrefab: {fileID: 7068190179729369226, guid: 9c3996afdb6034cf69c37892fca6fbf6, type: 3}
-  blueProjectilePrefab: {fileID: 5938100456915277173, guid: e9d82860989744ebb912bb07531e5072, type: 3}
+  greenProjectilePrefab: {fileID: 1705869798285036531, guid: 55d10532fbf8f40378c800e62299a54d, type: 3}
+  purpleProjectilePrefab: {fileID: 4806838366507493363, guid: a952362b1c26f4f4cb89d751517716dd, type: 3}
   projectileSpawnPoint: {fileID: 7264862181425218448}
   projectileSpeed: 10
 --- !u!1 &4241591296470357480
@@ -275,7 +275,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

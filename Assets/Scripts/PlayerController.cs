@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -11,11 +13,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private Health health;
     [SerializeField] private Animator animator;
+    [SerializeField] private Light2D light2D;
 
     [Header("Player Data")]
     [SerializeField] private float playerSpeed;
     [SerializeField] private float fireRate;
-    [SerializeField] private float rotationSpeed = 5.0f;
 
     [Header("Map Objects")]
     [SerializeField] private GameObject dimensionMap1;
@@ -33,8 +35,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Shake shake;
 
     [Header("Dimensions Data")]
-    [SerializeField] private LayerMask redDimensionLayer;
-    [SerializeField] private LayerMask blueDimensionLayer;
+    [SerializeField] private LayerMask greenDimensionLayer;
+    [SerializeField] private LayerMask purpleDimensionLayer;
     [SerializeField] private float dimensionSwitchRate;
     [SerializeField] private Slider dimensionSlider;
 
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 mousePos;
     private float lastBulletFiredTime;
     private float dimensionSwitchCooldownTime;
+    private Vector2 shootDirection;
 
     private void Start()
     {
@@ -104,8 +107,8 @@ public class PlayerController : MonoBehaviour
         // Fire
         if (Input.GetButtonDown("Fire1") && lastBulletFiredTime >= fireRate)
         {
-            Shoot();
-            
+            Shoot(shootDirection);
+
             lastBulletFiredTime = 0.0f;
         }
 
@@ -146,16 +149,15 @@ public class PlayerController : MonoBehaviour
         // calculates the angle between the player and the mouse cursor 
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
-        // Smoothly interpolate the current rotation to the target rotation
-        rb.rotation = Mathf.LerpAngle(rb.rotation, angle, Time.fixedDeltaTime * rotationSpeed);
-        
+        // Calculate shoot direction
+        shootDirection = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+
     }
 
-    private void Shoot()
+    private void Shoot(Vector2 shootDirection)
     {
         AudioManager.Instance.Play("PlayerShoot");
-        GameObject projectileInstance =  Instantiate(projectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
-        Vector2 shootDirection = new Vector2(Mathf.Cos(rb.rotation * Mathf.Deg2Rad), Mathf.Sin(rb.rotation * Mathf.Deg2Rad));
+        GameObject projectileInstance = Instantiate(projectilePrefab, projectileSpawnPoint.transform.position, Quaternion.identity);
         projectileInstance.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;
         Destroy(projectileInstance, projectileLifeTime);
     }
@@ -166,14 +168,16 @@ public class PlayerController : MonoBehaviour
         { 
             dimensionMap1.SetActive(false);
             dimensionMap2.SetActive(true);
-            gameObject.layer = LayerMask.NameToLayer("BlueDimension");
+            gameObject.layer = LayerMask.NameToLayer("PurpleDimension");
+            light2D.color = Color.magenta;
             isAnotherDimension = true;
         }
         else
         {
             dimensionMap1.SetActive(true);
             dimensionMap2.SetActive(false);
-            gameObject.layer = LayerMask.NameToLayer("RedDimension");
+            gameObject.layer = LayerMask.NameToLayer("GreenDimension");
+            light2D.color = Color.green;
             isAnotherDimension = false;
         }
     }
@@ -202,7 +206,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleDie()
     {
-
+        animator.SetTrigger("IsDead");
+        
     }
 
     public void UpdateHealthBar(float curenthealth)

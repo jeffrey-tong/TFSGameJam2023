@@ -20,12 +20,12 @@ public class MeleeEnemy : MonoBehaviour
         int randomLayerIndex = Random.Range(0, 2);
         if (randomLayerIndex == 0)
         {
-            gameObject.layer = LayerMask.NameToLayer("BlueDimension");
+            gameObject.layer = LayerMask.NameToLayer("PurpleDimension");
             currentLayer = gameObject.layer;
         }
         else if (randomLayerIndex == 1)
         {
-            gameObject.layer = LayerMask.NameToLayer("RedDimension");
+            gameObject.layer = LayerMask.NameToLayer("GreenDimension");
             currentLayer = gameObject.layer;
         }
     }

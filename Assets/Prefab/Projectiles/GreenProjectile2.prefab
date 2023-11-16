@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4972019116380368490}
   - component: {fileID: 6174042391853289240}
   - component: {fileID: 3627283016728730766}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlueProj2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,8 +119,8 @@ GameObject:
   - component: {fileID: 1881699138957810287}
   - component: {fileID: 4115884350130545404}
   - component: {fileID: 2911912416157911521}
-  m_Layer: 9
-  m_Name: BlueProjectile2
+  m_Layer: 8
+  m_Name: GreenProjectile2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ Transform:
   m_Children:
   - {fileID: 4972019116380368490}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1881699138957810287
 Rigidbody2D:
@@ -236,7 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8765661529887869839}
   - component: {fileID: 4700056840066827837}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.32743883, b: 1, a: 1}
+      key0: {r: 0, g: 1, b: 0.08972359, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
