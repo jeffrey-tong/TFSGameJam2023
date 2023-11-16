@@ -5,10 +5,16 @@ using UnityEngine;
 public class OrbitEnemy : MonoBehaviour
 {
     private CircleCollider2D circleCollider2D;
-    public float moveSpeed = 15f;
+    private float moveSpeed;
+    public float minMoveSpeed = 12f;
+    public float maxMoveSpeed = 25f;
+
     public float orbitRadius = 10f;
-    public float attackSpeed = 1.0f;
-    private bool canAttack = true;
+
+    private float attackSpeed;
+    public float minAttackSpeed = 1.0f;
+    public float maxAttackSpeed = 3.0f;
+    private bool canAttack = false;
 
     private Rigidbody2D rb;
     private Transform player;
@@ -17,10 +23,14 @@ public class OrbitEnemy : MonoBehaviour
     [SerializeField] private GameObject projectileSpawnPoint;
     [SerializeField] private GameObject redProjectilePrefab;
     [SerializeField] private GameObject blueProjectilePrefab;
-    [SerializeField] private float projectileSpeed = 10.0f;
+    private float projectileSpeed;
+    public float minProjSpeed = 8f;
+    public float maxProjSpeed = 15f;
 
     private GameObject currentProjectilePrefab;
     private int currentLayer;
+
+    private EnemySpawner spawner;
 
     private void Awake()
     {
@@ -53,24 +63,18 @@ public class OrbitEnemy : MonoBehaviour
             Debug.Log("Player not found");
         }
 
-        if (moveSpeed <= 0)
-        {
-            moveSpeed = 15f;
-        }
+        moveSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
         if (orbitRadius <= 0)
         {
             orbitRadius = 10.0f;
         }
-        if (attackSpeed <= 0)
-        {
-            attackSpeed = 1.0f;
-        }
-        if (projectileSpeed <= 0)
-        {
-            projectileSpeed = 10.0f;
-        }
+        attackSpeed = Random.Range(minAttackSpeed, maxAttackSpeed);
+        projectileSpeed = Random.Range(minProjSpeed, maxProjSpeed);
+        
+        spawner = GameObject.FindObjectOfType<EnemySpawner>();
 
         MoveToClosestPointOnCircle();
+        StartCoroutine(AttackCooldown());
     }
 
     // Update is called once per frame
@@ -122,10 +126,6 @@ public class OrbitEnemy : MonoBehaviour
         GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
         //Set projectile layer = to enemy layer
         projectileInstance.layer = currentLayer;
-
-
-        Vector2 shootDirection = new Vector2(Mathf.Cos(rb.rotation * Mathf.Deg2Rad), Mathf.Sin(rb.rotation * Mathf.Deg2Rad));
-        projectileInstance.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;
     }
 
     System.Collections.IEnumerator AttackCooldown()
@@ -137,6 +137,11 @@ public class OrbitEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //do later
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(collision.gameObject);
+            spawner.EnemyDestroyed();
+            Destroy(gameObject);
+        }
     }
 }

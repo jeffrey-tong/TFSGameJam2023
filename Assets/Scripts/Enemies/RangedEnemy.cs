@@ -6,12 +6,17 @@ using UnityEngine;
 public class RangedEnemy : MonoBehaviour
 {
     private CircleCollider2D circleCollider2D;
-    public float moveSpeed = 2f;
-    public float attackRange = 10.0f;
+    private float moveSpeed;
+    public float minMoveSpeed = 2.0f;
+    public float maxMoveSpeed = 10.0f;
+
+    private float attackRange = 10.0f;
     public float attackRangeBuffer = 1.0f;
-    public float attackSpeed = 1.0f;
-    private bool isAttacking = false;
-    private bool canAttack = true;
+
+    private float attackSpeed;
+    public float minAttackSpeed = 1.0f;
+    public float maxAttackSpeed = 2.5f;
+    private bool canAttack = false;
 
     private Rigidbody2D rb;
     private Transform player;
@@ -20,10 +25,14 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] private GameObject redProjectilePrefab;
     [SerializeField] private GameObject blueProjectilePrefab;
     [SerializeField] private GameObject projectileSpawnPoint;
-    [SerializeField] private float projectileSpeed = 10.0f;
+    private float projectileSpeed;
+    public float minProjSpeed = 8.0f;
+    public float maxProjSpeed = 14.0f;
   
     private GameObject currentProjectilePrefab;
     private int currentLayer;
+
+    private EnemySpawner spawner;
 
     private void Awake()
     {
@@ -56,26 +65,17 @@ public class RangedEnemy : MonoBehaviour
             Debug.Log("Player not found");
         }
 
-        if (moveSpeed <= 0)
-        {
-            moveSpeed = 2f;
-        }
-        if(attackRange <= 0)
-        {
-            attackRange = 10.0f;
-        }
+        moveSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
         if(attackRangeBuffer <= 0) 
         {
             attackRangeBuffer = 1.0f;
         }
-        if(attackSpeed <= 0)
-        {
-            attackSpeed = 1.0f;
-        }
-        if(projectileSpeed <= 0)
-        {
-            projectileSpeed = 10.0f;
-        }
+        attackSpeed = Random.Range(minAttackSpeed, maxAttackSpeed);
+        projectileSpeed = Random.Range(minProjSpeed, maxProjSpeed);
+
+        spawner = GameObject.FindObjectOfType<EnemySpawner>();
+
+        StartCoroutine(AttackCooldown());
     }
 
     // Update is called once per frame
@@ -86,30 +86,20 @@ public class RangedEnemy : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        if (!isAttacking)
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance > attackRange)
         {
             MoveTowardsPlayer();
-            // Check if the player is within attack range
-            if (Vector3.Distance(transform.position, player.position) <= attackRange + attackRangeBuffer && canAttack)
-            {
-                StartAttack();
-                StartCoroutine(AttackCooldown());
-            }
         }
 
-        if (isAttacking)
+        if (distance < attackRange)
         {
-            if (Vector3.Distance(transform.position, player.position) > attackRange + attackRangeBuffer)
-            {
-                isAttacking = false;
-            }
-            if (Vector3.Distance(transform.position, player.position) <= attackRange + attackRangeBuffer && canAttack)
+            if (canAttack)
             {
                 StartAttack();
                 StartCoroutine(AttackCooldown());
             }
         }
-        
     }
 
     void MoveTowardsPlayer()
@@ -124,14 +114,11 @@ public class RangedEnemy : MonoBehaviour
 
     void StartAttack()
     {
-        isAttacking = true;
         AudioManager.Instance.Play("EnemyShoot");
         GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+        Debug.Log(projectileSpawnPoint.transform.rotation);
         //Set projectile layer = to enemy layer
         projectileInstance.layer = currentLayer;
-
-        Vector2 shootDirection = new Vector2(Mathf.Cos(rb.rotation * Mathf.Deg2Rad), Mathf.Sin(rb.rotation * Mathf.Deg2Rad));
-        projectileInstance.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;
     }
 
     System.Collections.IEnumerator AttackCooldown()
@@ -143,6 +130,11 @@ public class RangedEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //do later
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(collision.gameObject);
+            spawner.EnemyDestroyed();
+            Destroy(gameObject);
+        }
     }
 }
