@@ -20,13 +20,13 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Check the player is in the correct dimension layer
-        if (gameObject.layer == LayerMask.NameToLayer("RedDimension") && collision.gameObject.layer == LayerMask.NameToLayer("RedDimension") && collision.CompareTag("Player"))
+        if (gameObject.layer == LayerMask.NameToLayer("GreenDimension") && collision.gameObject.layer == LayerMask.NameToLayer("GreenDimension") && collision.CompareTag("Player"))
         {
             Health playerHealth = collision.GetComponent<Health>();
             playerHealth.DealDamage(damage);
             Destroy(gameObject);
         }
-        else if (gameObject.layer == LayerMask.NameToLayer("BlueDimension") && collision.gameObject.layer == LayerMask.NameToLayer("BlueDimension") && collision.CompareTag("Player"))
+        else if (gameObject.layer == LayerMask.NameToLayer("PurpleDimension") && collision.gameObject.layer == LayerMask.NameToLayer("PurpleDimension") && collision.CompareTag("Player"))
         {
             Health playerHealth = collision.GetComponent<Health>();
             playerHealth.DealDamage(damage);

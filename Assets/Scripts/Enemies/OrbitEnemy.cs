@@ -15,8 +15,8 @@ public class OrbitEnemy : MonoBehaviour
 
     [Header("Bullet Data")]
     [SerializeField] private GameObject projectileSpawnPoint;
-    [SerializeField] private GameObject redProjectilePrefab;
-    [SerializeField] private GameObject blueProjectilePrefab;
+    [SerializeField] private GameObject greenProjectilePrefab;
+    [SerializeField] private GameObject purpleProjectilePrefab;
     [SerializeField] private float projectileSpeed = 10.0f;
 
     private GameObject currentProjectilePrefab;
@@ -31,15 +31,15 @@ public class OrbitEnemy : MonoBehaviour
         int randomLayerIndex = Random.Range(0, 2);
         if (randomLayerIndex == 0)
         {
-            gameObject.layer = LayerMask.NameToLayer("BlueDimension");
+            gameObject.layer = LayerMask.NameToLayer("PurpleDimension");
             currentLayer = gameObject.layer;
-            currentProjectilePrefab = blueProjectilePrefab;
+            currentProjectilePrefab = purpleProjectilePrefab;
         }
         else if (randomLayerIndex == 1)
         {
-            gameObject.layer = LayerMask.NameToLayer("RedDimension");
+            gameObject.layer = LayerMask.NameToLayer("GreenDimension");
             currentLayer = gameObject.layer;
-            currentProjectilePrefab = redProjectilePrefab;
+            currentProjectilePrefab = greenProjectilePrefab;
         }
 
     }
