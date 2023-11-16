@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7786514085666742671}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.66, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -121,9 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSpeed: 2
-  projectilePrefab: {fileID: 6069726061745670412, guid: ea43f5f5b763de34494b6fc48142f6f8, type: 3}
-  redProjectilePrefab: {fileID: 6069726061745670412, guid: 1d1fc2ccb53a73d4491aa5974c2485a8, type: 3}
-  blueProjectilePrefab: {fileID: 6069726061745670412, guid: ebcc61e35e00e5b488b853e3b352d62b, type: 3}
+  redProjectilePrefab: {fileID: 6069726061745670412, guid: 0f0ee89dc8d8ca94da40d537c344f87b, type: 3}
+  blueProjectilePrefab: {fileID: 6069726061745670412, guid: ea43f5f5b763de34494b6fc48142f6f8, type: 3}
   projectileSpawnPoint: {fileID: 8487629218001994422}
   projectileSpeed: 15
 --- !u!1 &8487629218001994422

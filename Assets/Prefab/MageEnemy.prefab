@@ -443,8 +443,8 @@ MonoBehaviour:
   attackRange: 15
   attackRangeBuffer: 1
   attackSpeed: 4
-  redProjectilePrefab: {fileID: 6069726061745670412, guid: 1d1fc2ccb53a73d4491aa5974c2485a8, type: 3}
-  blueProjectilePrefab: {fileID: 6069726061745670412, guid: ebcc61e35e00e5b488b853e3b352d62b, type: 3}
+  redProjectilePrefab: {fileID: 6069726061745670412, guid: 0f0ee89dc8d8ca94da40d537c344f87b, type: 3}
+  blueProjectilePrefab: {fileID: 6069726061745670412, guid: ea43f5f5b763de34494b6fc48142f6f8, type: 3}
   projectileSpawnPoints:
   - {fileID: 5685849866059493824}
   - {fileID: 1480398893361309134}
