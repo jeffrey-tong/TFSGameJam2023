@@ -989,7 +989,7 @@ MonoBehaviour:
     output: {fileID: 0}
     source: {fileID: 0}
   - name: EnemyShoot
-    clip: {fileID: 8300000, guid: 840a82910c35b3f4d84a141b4fac5aa0, type: 3}
+    clip: {fileID: 8300000, guid: 4f25b81b2d86059429230fc035ed08e4, type: 3}
     volume: 0.6
     pitch: 1
     loop: 0

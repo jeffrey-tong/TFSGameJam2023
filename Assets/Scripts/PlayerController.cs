@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && dimensionSwitchCooldownTime >= dimensionSwitchRate) 
         {
             StartCoroutine(DimensionDelay());
-
+            AudioManager.Instance.Play("SplitDimension");
             dimensionSwitchCooldownTime = 0.0f;
         }
 
@@ -179,6 +179,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleTakeDamage()
     {
+        AudioManager.Instance.Play("Hit");
         UpdateHealthBar(health.health);
         shake.CamShake();
         // spawn particles
