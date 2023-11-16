@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
+        AudioManager.Instance.Play("PlayerShoot");
         GameObject projectileInstance =  Instantiate(projectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
         Vector2 shootDirection = new Vector2(Mathf.Cos(rb.rotation * Mathf.Deg2Rad), Mathf.Sin(rb.rotation * Mathf.Deg2Rad));
         projectileInstance.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;

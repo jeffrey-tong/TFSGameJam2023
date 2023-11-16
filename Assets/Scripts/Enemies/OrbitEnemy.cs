@@ -118,9 +118,11 @@ public class OrbitEnemy : MonoBehaviour
 
     void StartAttack()
     {
+        AudioManager.Instance.Play("EnemyShoot");
         GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
         //Set projectile layer = to enemy layer
         projectileInstance.layer = currentLayer;
+
 
         Vector2 shootDirection = new Vector2(Mathf.Cos(rb.rotation * Mathf.Deg2Rad), Mathf.Sin(rb.rotation * Mathf.Deg2Rad));
         projectileInstance.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;
