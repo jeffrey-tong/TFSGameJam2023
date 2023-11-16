@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BoxCollider2D boxCollider2D;
     [SerializeField] private Camera cam;
     [SerializeField] private Health health;
+    [SerializeField] private Animator animator;
 
     [Header("Player Data")]
     [SerializeField] private float playerSpeed;
@@ -129,6 +130,11 @@ public class PlayerController : MonoBehaviour
         playerMovement.x = horizontalInput;
         playerMovement.y = verticalInput;
 
+        // Animations
+        animator.SetFloat("Horizontal", playerMovement.x);
+        animator.SetFloat("Vertical", playerMovement.y);
+        animator.SetFloat("Speed", playerMovement.magnitude);
+
         playerMovement.Normalize();
 
         // Player movement
@@ -142,7 +148,7 @@ public class PlayerController : MonoBehaviour
 
         // Smoothly interpolate the current rotation to the target rotation
         rb.rotation = Mathf.LerpAngle(rb.rotation, angle, Time.fixedDeltaTime * rotationSpeed);
-        //rb.rotation = angle;
+        
     }
 
     private void Shoot()
