@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    private void FixedUpdate() 
     {
         Move();
         UpdateDimensionBar(dimensionSwitchCooldownTime);
