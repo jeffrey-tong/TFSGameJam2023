@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSpeed: 2
-  redProjectilePrefab: {fileID: 6069726061745670412, guid: 0f0ee89dc8d8ca94da40d537c344f87b, type: 3}
-  blueProjectilePrefab: {fileID: 6069726061745670412, guid: ea43f5f5b763de34494b6fc48142f6f8, type: 3}
+  redProjectilePrefab: {fileID: 4806838366507493363, guid: a952362b1c26f4f4cb89d751517716dd, type: 3}
+  blueProjectilePrefab: {fileID: 1705869798285036531, guid: 55d10532fbf8f40378c800e62299a54d, type: 3}
   projectileSpawnPoint: {fileID: 8487629218001994422}
   projectileSpeed: 15
 --- !u!1 &8487629218001994422
