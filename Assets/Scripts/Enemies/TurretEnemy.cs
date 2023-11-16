@@ -6,17 +6,24 @@ public class TurretEnemy : MonoBehaviour
 {
     private CircleCollider2D circleCollider2D;
     private Rigidbody2D rb;
-    public float attackSpeed = 2.0f;
-    private bool canAttack = true;
+    public float minAttackSpeed = 1;
+    public float maxAttackSpeed = 3;
+    public float minProjSpeed = 5;
+    public float maxProjSpeed = 15;
+
+    private float attackSpeed;
+    private bool canAttack = false;
 
     [Header("Bullet Data")]
     [SerializeField] private GameObject redProjectilePrefab;
     [SerializeField] private GameObject blueProjectilePrefab;
     [SerializeField] private GameObject projectileSpawnPoint;
-    [SerializeField] private float projectileSpeed = 15.0f;
+    private float projectileSpeed;
 
     private GameObject currentProjectilePrefab;
     private int currentLayer;
+
+    private EnemySpawner spawner;
 
     private void Awake()
     {
@@ -42,19 +49,15 @@ public class TurretEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (attackSpeed <= 0)
-        {
-            attackSpeed = 1.0f;
-        }
-        if (projectileSpeed <= 0)
-        {
-            projectileSpeed = 10.0f;
-        }
+        attackSpeed = Random.Range(minAttackSpeed, maxAttackSpeed);
+        projectileSpeed = Random.Range(minProjSpeed, maxProjSpeed);
 
         if(transform.position.x > 0)
         {
             transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
         }
+        spawner = GameObject.FindObjectOfType<EnemySpawner>();
+        StartCoroutine(AttackCooldown());
     }
 
     // Update is called once per frame
@@ -73,9 +76,6 @@ public class TurretEnemy : MonoBehaviour
         GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
         //Set projectile layer = to enemy layer
         projectileInstance.layer = currentLayer;
-
-        Vector2 shootDirection = new Vector2(Mathf.Cos(rb.rotation * Mathf.Deg2Rad), Mathf.Sin(rb.rotation * Mathf.Deg2Rad));
-        projectileInstance.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;
     }
 
     System.Collections.IEnumerator AttackCooldown()
@@ -87,6 +87,11 @@ public class TurretEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //do later
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(collision.gameObject);
+            spawner.EnemyDestroyed();
+            Destroy(gameObject);
+        }
     }
 }

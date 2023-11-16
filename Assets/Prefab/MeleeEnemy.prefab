@@ -81,8 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c548ea9f7369e448618e43f6334d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  spawner: {fileID: 8930385501444176058, guid: a48aab16704b52d49b2fc37d622dd10c, type: 3}
+  minMoveSpeed: 2
+  maxMoveSpeed: 5
 --- !u!1 &8932269593966165495
 GameObject:
   m_ObjectHideFlags: 0
