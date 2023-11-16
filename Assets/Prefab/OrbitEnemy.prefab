@@ -310,10 +310,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435360dd3b60dea41b33f3be26aabc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  orbitRadius: 0
-  attackSpeed: 1
+  minMoveSpeed: 12
+  maxMoveSpeed: 25
+  orbitRadius: 10
+  minAttackSpeed: 1
+  maxAttackSpeed: 3
   projectileSpawnPoint: {fileID: 1695304496855767898}
   greenProjectilePrefab: {fileID: 5938100456915277173, guid: e9d82860989744ebb912bb07531e5072, type: 3}
   purpleProjectilePrefab: {fileID: 7068190179729369226, guid: 9c3996afdb6034cf69c37892fca6fbf6, type: 3}
-  projectileSpeed: 10
+  minProjSpeed: 8
+  maxProjSpeed: 15

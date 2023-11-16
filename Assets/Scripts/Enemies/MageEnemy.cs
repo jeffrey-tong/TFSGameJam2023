@@ -5,12 +5,17 @@ using UnityEngine;
 public class MageEnemy : MonoBehaviour
 {
     private CircleCollider2D circleCollider2D;
-    public float moveSpeed = 2f;
+    private float moveSpeed;
+    public float minMoveSpeed = 1.5f;
+    public float maxMoveSpeed = 3f;
+
     public float attackRange = 15.0f;
     public float attackRangeBuffer = 4.0f;
-    public float attackSpeed = 4.0f;
-    private bool canAttack = true;
-    private Bounds enemyBounds;
+
+    private float attackSpeed;
+    public float minAttackSpeed = 3.5f;
+    public float maxAttackSpeed = 4.5f;
+    private bool canAttack = false;
 
     private Rigidbody2D rb;
     private Transform player;
@@ -19,17 +24,19 @@ public class MageEnemy : MonoBehaviour
     [SerializeField] private GameObject greenProjectilePrefab;
     [SerializeField] private GameObject purpleProjectilePrefab;
     [SerializeField] private GameObject[] projectileSpawnPoints;
-    [SerializeField] private float projectileSpeed = 5.0f;
+    private float projectileSpeed;
+    public float minProjSpeed = 5.0f;
+    public float maxProjSpeed = 10.0f;
 
     private GameObject currentProjectilePrefab;
     private int currentLayer;
+
+    private EnemySpawner spawner;
 
     private void Awake()
     {
         circleCollider2D = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-
-        enemyBounds = GetComponentInChildren<SpriteRenderer>().bounds;
 
         // Place enemy in random layer
         int randomLayerIndex = Random.Range(0, 2);
@@ -57,10 +64,8 @@ public class MageEnemy : MonoBehaviour
             Debug.Log("Player not found");
         }
 
-        if (moveSpeed <= 0)
-        {
-            moveSpeed = 2f;
-        }
+
+        moveSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
         if (attackRange <= 0)
         {
             attackRange = 15.0f;
@@ -69,14 +74,11 @@ public class MageEnemy : MonoBehaviour
         {
             attackRangeBuffer = 4.0f;
         }
-        if (attackSpeed <= 0)
-        {
-            attackSpeed = 1.0f;
-        }
-        if (projectileSpeed <= 0)
-        {
-            projectileSpeed = 5.0f;
-        }
+        attackSpeed = Random.Range(minAttackSpeed, maxAttackSpeed);
+        projectileSpeed = Random.Range(minProjSpeed, maxProjSpeed);
+        spawner = GameObject.FindObjectOfType<EnemySpawner>();
+
+        StartCoroutine(AttackCooldown());
     }
 
     // Update is called once per frame
@@ -104,9 +106,7 @@ public class MageEnemy : MonoBehaviour
                 StartAttack();
                 StartCoroutine(AttackCooldown());
             }
-        }
-        
-        
+        }  
     }
 
     void MoveTowardsPlayer()
@@ -135,9 +135,6 @@ public class MageEnemy : MonoBehaviour
             GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoints[i].transform.position, projectileSpawnPoints[i].transform.rotation);
             //Set projectile layer = to enemy layer
             projectileInstance.layer = currentLayer;
-
-            Vector2 shootDirection = new Vector2(Mathf.Cos(rb.rotation * Mathf.Deg2Rad), Mathf.Sin(rb.rotation * Mathf.Deg2Rad));
-            projectileInstance.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;
         }
     }
 
@@ -150,6 +147,11 @@ public class MageEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //do later
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(collision.gameObject);
+            spawner.EnemyDestroyed();
+            Destroy(gameObject);
+        }
     }
 }

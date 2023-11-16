@@ -5,7 +5,9 @@ using UnityEngine;
 public class MeleeEnemy : MonoBehaviour
 {
     private CircleCollider2D circleCollider2D;
-    public float moveSpeed = 2f;
+    private float moveSpeed;
+    public float minMoveSpeed = 2;
+    public float maxMoveSpeed = 5;
     private Transform player;
     private EnemySpawner spawner;
     private int currentLayer;
@@ -37,10 +39,7 @@ public class MeleeEnemy : MonoBehaviour
             Debug.Log("Player not found");
         }
 
-        if(moveSpeed <= 0)
-        {
-            moveSpeed = 2f;
-        }
+        moveSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
     }
 
     // Update is called once per frame
@@ -59,7 +58,12 @@ public class MeleeEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //do damage
+            spawner.EnemyDestroyed();
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(collision.gameObject);
             spawner.EnemyDestroyed();
             Destroy(gameObject);
         }

@@ -74,8 +74,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b46c4e10af807b48aa1020f8c295d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileLifetime: 4
+  projectileLifetime: 8
+  minProjSpeed: 5
+  maxProjSpeed: 15
+  direction: {x: 0, y: 0, z: 0}
   damage: 10
+  loopRadius: 2
+  loopDuration: 2
+  waveSpeed: 1
+  amplitude: 0.05
+  frequency: 5
 --- !u!58 &4584891451729987621
 CircleCollider2D:
   m_ObjectHideFlags: 0
