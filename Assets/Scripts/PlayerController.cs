@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player Data")]
     [SerializeField] private float playerSpeed;
     [SerializeField] private float fireRate;
+    [SerializeField] private float rotationSpeed = 5.0f;
 
     [Header("Map Objects")]
     [SerializeField] private GameObject dimensionMap1;
@@ -90,7 +91,11 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        //mousePos = cam.ScreenToWorldPoint(Input.mousePosition); Had to change this line because of the perpective camera
+
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        float distance = (transform.position - cam.transform.position).magnitude;
+        mousePos = ray.GetPoint(distance);
 
         lastBulletFiredTime += Time.deltaTime;
         dimensionSwitchCooldownTime += Time.deltaTime;
@@ -134,7 +139,10 @@ public class PlayerController : MonoBehaviour
 
         // calculates the angle between the player and the mouse cursor 
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
+
+        // Smoothly interpolate the current rotation to the target rotation
+        rb.rotation = Mathf.LerpAngle(rb.rotation, angle, Time.fixedDeltaTime * rotationSpeed);
+        //rb.rotation = angle;
     }
 
     private void Shoot()

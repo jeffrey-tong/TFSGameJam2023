@@ -158,11 +158,11 @@ MonoBehaviour:
   cam: {fileID: 0}
   health: {fileID: 672403302721338014}
   playerSpeed: 8
-  fireRate: 1
+  fireRate: 0.5
   dimensionMap1: {fileID: 0}
   dimensionMap2: {fileID: 0}
   isAnotherDimension: 0
-  projectilePrefab: {fileID: 1047741547062842, guid: 2ee79234bfa1b9d439b54471865229bd, type: 3}
+  projectilePrefab: {fileID: 6069726061745670412, guid: b651f1dfb42f76a4b999c4b331bdc7a1, type: 3}
   projectileSpawnPoint: {fileID: 10692839508466644}
   projectileSpeed: 18
   projectileLifeTime: 3
