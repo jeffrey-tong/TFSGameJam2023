@@ -61,6 +61,11 @@ public class MeleeEnemy : MonoBehaviour
             spawner.EnemyDestroyed();
             Destroy(gameObject);
         }
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Destroy(collision.gameObject);

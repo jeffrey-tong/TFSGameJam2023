@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
         // Fire
         if (Input.GetButtonDown("Fire1") && lastBulletFiredTime >= fireRate)
         {
-            Shoot(shootDirection);
+            Shoot();
 
             lastBulletFiredTime = 0.0f;
         }
@@ -154,10 +154,27 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void Shoot(Vector2 shootDirection)
+    private void Shoot()
     {
         AudioManager.Instance.Play("PlayerShoot");
         GameObject projectileInstance = Instantiate(projectilePrefab, projectileSpawnPoint.transform.position, Quaternion.identity);
+
+        // Get the mouse position in screen space
+        Vector3 mousePositionScreen = Input.mousePosition;
+
+        // Set the distance from the camera to the object
+        float distanceFromCamera = 10f; // You may need to adjust this based on your camera settings
+
+        // Z position is set to the distance from the camera
+        mousePositionScreen.z = distanceFromCamera;
+
+        // Convert the mouse position from screen space to world space
+        Vector3 mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionScreen);
+
+        // Calculate the position relative to the target transform
+        Vector3 shootDirection = mousePositionWorld - projectileSpawnPoint.transform.position;
+        shootDirection.Normalize();
+
         projectileInstance.GetComponent<Rigidbody2D>().velocity = shootDirection * projectileSpeed;
         Destroy(projectileInstance, projectileLifeTime);
     }
