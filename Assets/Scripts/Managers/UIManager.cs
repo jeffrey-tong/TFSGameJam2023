@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 [DefaultExecutionOrder(-1)]
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance { get; set; }
+    public static UIManager Instance;
 
     [Header("Buttons")]
     [SerializeField] private Button playButton;
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public GameObject gameOverPanel;
     [SerializeField] private GameObject creditsPanel;
     [SerializeField] public GameObject scorePanel;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     [Header("Audio Components")]
     [SerializeField] private AudioSource backgroundMusic;
@@ -32,12 +34,26 @@ public class UIManager : MonoBehaviour
     private bool isActive;
     [HideInInspector] public bool isDead;
 
+    public float score = 0;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         if (playButton)
         {
-            playButton.onClick.AddListener(() => Invoke("StartGame", 0.5f));
+            playButton.onClick.AddListener(StartGame);
             playButton.onClick.AddListener(() => AudioManager.Instance.Play("Select"));
         }
 
@@ -70,15 +86,16 @@ public class UIManager : MonoBehaviour
             AudioManager.Instance.Play("Select");
             PauseGame();
         }
-
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            UpdateScoreDisplay();
-        }
     }
 
     public void StartGame()
     {
+        score = 0;
+        if(scoreText != null)
+        {
+            scoreText.text = "Score: " + score.ToString();
+        }
+        
         SceneManager.LoadScene(1);
     }
 
@@ -168,6 +185,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateScoreDisplay()
     {
-    
+        score += 5;
+        scoreText.text = "Score: " +  score.ToString();
     }
 }

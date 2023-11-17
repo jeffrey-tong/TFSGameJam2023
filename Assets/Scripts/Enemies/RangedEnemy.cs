@@ -116,7 +116,6 @@ public class RangedEnemy : MonoBehaviour
     {
         AudioManager.Instance.Play("EnemyShoot");
         GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
-        Debug.Log(projectileSpawnPoint.transform.rotation);
         //Set projectile layer = to enemy layer
         projectileInstance.layer = currentLayer;
     }
