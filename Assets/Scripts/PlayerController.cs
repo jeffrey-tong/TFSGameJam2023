@@ -225,8 +225,6 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetTrigger("IsDead");
         UIManager.Instance.GameOver();
-
-
     }
 
 

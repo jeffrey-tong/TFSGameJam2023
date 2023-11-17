@@ -11,6 +11,7 @@ public class MeleeEnemy : MonoBehaviour
     private Transform player;
     private EnemySpawner spawner;
     private int currentLayer;
+    public int damage = 10;
 
     private void Awake()
     {
@@ -56,12 +57,18 @@ public class MeleeEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (gameObject.layer == LayerMask.NameToLayer("GreenDimension") && collision.gameObject.layer == LayerMask.NameToLayer("GreenDimension") && collision.gameObject.CompareTag("Player"))
         {
-            spawner.EnemyDestroyed();
+            Health playerHealth = collision.gameObject.GetComponent<Health>();
+            playerHealth.DealDamage(damage);
             Destroy(gameObject);
         }
-        
+        else if (gameObject.layer == LayerMask.NameToLayer("PurpleDimension") && collision.gameObject.layer == LayerMask.NameToLayer("PurpleDimension") && collision.gameObject.CompareTag("Player"))
+        {
+            Health playerHealth = collision.gameObject.GetComponent<Health>();
+            playerHealth.DealDamage(damage);
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -72,5 +79,6 @@ public class MeleeEnemy : MonoBehaviour
             spawner.EnemyDestroyed();
             Destroy(gameObject);
         }
+
     }
 }
