@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] private Button playButton;
-    [SerializeField] private Button settingsButton;
     [SerializeField] private Button creditsButton;
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button returnToMenuButton;
@@ -65,9 +64,6 @@ public class UIManager : MonoBehaviour
 
         if (returnToMenuButton)
             returnToMenuButton.onClick.AddListener(GameQuit);
-
-        if (settingsButton)
-            settingsButton.onClick.AddListener(GameSettings);
 
         if (quitButton)
             quitButton.onClick.AddListener(GameQuit);
