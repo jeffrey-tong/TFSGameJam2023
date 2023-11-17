@@ -1725,7 +1725,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f84a661e5034c294aaf7f77038dcbce0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1833,8 +1833,10 @@ MonoBehaviour:
   gameOverPanel: {fileID: 0}
   creditsPanel: {fileID: 1683934960505453792}
   scorePanel: {fileID: 0}
+  scoreText: {fileID: 0}
   backgroundMusic: {fileID: 0}
   isDead: 0
+  score: 0
 --- !u!114 &1937642899
 MonoBehaviour:
   m_ObjectHideFlags: 0
