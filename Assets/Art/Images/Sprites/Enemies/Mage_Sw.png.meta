@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dc3c036a03dd99645977b606abef0b11
+guid: 132f2cd156724ae4ebce76d6dee3005e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Golem_0
+      name: Mage_Sw_0
       rect:
         serializedVersion: 2
-        x: 25
-        y: 831
-        width: 48
-        height: 48
+        x: 4
+        y: 0
+        width: 22
+        height: 34
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bc5f05e6e918c24eaa603fe2864fda5
-      internalID: 1884154999
+      spriteID: b6fbba190c6cff74f82a4d0e198275a8
+      internalID: 116722669
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_1
+      name: Mage_Sw_1
       rect:
         serializedVersion: 2
-        x: 125
-        y: 830
-        width: 48
-        height: 48
+        x: 26
+        y: 1
+        width: 22
+        height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d35cd7d52ba55a54992834c05253687b
-      internalID: 1649268123
+      spriteID: b9f8a13dd90379c4faf1c65785410654
+      internalID: -1899657943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_2
+      name: Mage_Sw_2
       rect:
         serializedVersion: 2
-        x: 225
-        y: 830
-        width: 48
-        height: 48
+        x: 48
+        y: 1
+        width: 22
+        height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40fe10d3dc5d96c42b5e9238b93146f9
-      internalID: -1121613136
+      spriteID: 83e475ade5b8d4a468c23148ab339c04
+      internalID: 1731776018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_3
+      name: Mage_Sw_3
       rect:
         serializedVersion: 2
-        x: 325
-        y: 830
-        width: 48
-        height: 48
+        x: 70
+        y: 1
+        width: 22
+        height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,92 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55ed1ac354ce1554b85d97ca5b63123d
-      internalID: 1755199734
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_4
-      rect:
-        serializedVersion: 2
-        x: 425
-        y: 830
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e24b7deea3234140980c2e1271d5912
-      internalID: 1075333393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_5
-      rect:
-        serializedVersion: 2
-        x: 525
-        y: 830
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3092aa447951ae6459b846bf7b3757cc
-      internalID: -1141268586
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_6
-      rect:
-        serializedVersion: 2
-        x: 625
-        y: 830
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5cf6d3304277a034595e144249b351d1
-      internalID: 707936624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_7
-      rect:
-        serializedVersion: 2
-        x: 725
-        y: 830
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e1c1b9d34259b04e8a66e8c8f2c252c
-      internalID: -383184051
+      spriteID: e1b4b531eea47d54981bc5c6d26fd5e0
+      internalID: 2013237856
       vertices: []
       indices: 
       edges: []
@@ -288,14 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Golem_0: 1884154999
-      Golem_1: 1649268123
-      Golem_2: -1121613136
-      Golem_3: 1755199734
-      Golem_4: 1075333393
-      Golem_5: -1141268586
-      Golem_6: 707936624
-      Golem_7: -383184051
+      Mage_Sw_0: 116722669
+      Mage_Sw_1: -1899657943
+      Mage_Sw_2: 1731776018
+      Mage_Sw_3: 2013237856
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

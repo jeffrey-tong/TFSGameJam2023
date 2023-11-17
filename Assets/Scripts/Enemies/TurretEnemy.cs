@@ -14,6 +14,7 @@ public class TurretEnemy : MonoBehaviour
     private float attackSpeed;
     private bool canAttack = false;
 
+
     [Header("Bullet Data")]
     [SerializeField] private GameObject greenProjectilePrefab;
     [SerializeField] private GameObject purpleProjectilePrefab;
@@ -96,4 +97,6 @@ public class TurretEnemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+  
 }
