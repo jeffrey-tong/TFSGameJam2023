@@ -1479,8 +1479,10 @@ MonoBehaviour:
   gameOverPanel: {fileID: 937066294}
   creditsPanel: {fileID: 0}
   scorePanel: {fileID: 216416126}
+  scoreText: {fileID: 1691882450}
   backgroundMusic: {fileID: 764206859}
   isDead: 0
+  score: 0
 --- !u!82 &764206859
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2278,8 +2280,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 442.31555, y: 36.70923}
-  m_SizeDelta: {x: 277.2332, y: 101.4888}
+  m_AnchoredPosition: {x: 547.9634, y: 36.70923}
+  m_SizeDelta: {x: 488.5288, y: 101.4888}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1691882450
 MonoBehaviour:

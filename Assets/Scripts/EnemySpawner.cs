@@ -63,6 +63,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void EnemyDestroyed()
     {
+        UIManager.Instance.UpdateScoreDisplay();
         numEnemiesSpawned--;
 
         if (numEnemiesSpawned < numberOfEnemiesToSpawn)
