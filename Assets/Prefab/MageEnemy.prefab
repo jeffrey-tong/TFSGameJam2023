@@ -408,14 +408,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8550665475844130803}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 1
+  m_UseAutoMass: 0
   m_Mass: 0.7853982
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -426,7 +426,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &9153241500839473179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,10 +439,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d626c32abb9b93f4399f9c541dcd0b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  minMoveSpeed: 1.5
+  maxMoveSpeed: 3
   attackRange: 15
   attackRangeBuffer: 1
-  attackSpeed: 4
+  minAttackSpeed: 3.5
+  maxAttackSpeed: 4.5
   greenProjectilePrefab: {fileID: 8812811745457465511, guid: 1220d3a9c808d479abf62cf5ca5274fd, type: 3}
   purpleProjectilePrefab: {fileID: 2471528840375977880, guid: 207f7760d514d4c0782ecf0898c76679, type: 3}
   projectileSpawnPoints:
@@ -451,7 +453,8 @@ MonoBehaviour:
   - {fileID: 331922858200487077}
   - {fileID: 8713418935693546077}
   - {fileID: 1990106447946499359}
-  projectileSpeed: 5
+  minProjSpeed: 5
+  maxProjSpeed: 10
 --- !u!1 &8713418935693546077
 GameObject:
   m_ObjectHideFlags: 0
