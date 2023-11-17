@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dc3c036a03dd99645977b606abef0b11
+guid: cfab1e2ed398bab408b3b14a5747471d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,169 +110,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Golem_0
+      name: Light_Ball_0
       rect:
         serializedVersion: 2
-        x: 25
-        y: 831
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 0
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bc5f05e6e918c24eaa603fe2864fda5
-      internalID: 1884154999
+      spriteID: 1e6309c38266c6343895393cedf5bb2d
+      internalID: -656176956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_1
+      name: Light_Ball_1
       rect:
         serializedVersion: 2
-        x: 125
-        y: 830
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 32
+        y: 2
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d35cd7d52ba55a54992834c05253687b
-      internalID: 1649268123
+      spriteID: 8edeced7a695d774ea35fd2145146b14
+      internalID: -1076785712
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_2
+      name: Light_Ball_2
       rect:
         serializedVersion: 2
-        x: 225
-        y: 830
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 63
+        y: 6
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40fe10d3dc5d96c42b5e9238b93146f9
-      internalID: -1121613136
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_3
-      rect:
-        serializedVersion: 2
-        x: 325
-        y: 830
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55ed1ac354ce1554b85d97ca5b63123d
-      internalID: 1755199734
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_4
-      rect:
-        serializedVersion: 2
-        x: 425
-        y: 830
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e24b7deea3234140980c2e1271d5912
-      internalID: 1075333393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_5
-      rect:
-        serializedVersion: 2
-        x: 525
-        y: 830
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3092aa447951ae6459b846bf7b3757cc
-      internalID: -1141268586
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_6
-      rect:
-        serializedVersion: 2
-        x: 625
-        y: 830
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5cf6d3304277a034595e144249b351d1
-      internalID: 707936624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_7
-      rect:
-        serializedVersion: 2
-        x: 725
-        y: 830
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e1c1b9d34259b04e8a66e8c8f2c252c
-      internalID: -383184051
+      spriteID: d8cf5ca2d5d90114c88515f2a887652a
+      internalID: 573205570
       vertices: []
       indices: 
       edges: []
@@ -288,14 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Golem_0: 1884154999
-      Golem_1: 1649268123
-      Golem_2: -1121613136
-      Golem_3: 1755199734
-      Golem_4: 1075333393
-      Golem_5: -1141268586
-      Golem_6: 707936624
-      Golem_7: -383184051
+      Light_Ball_0: -656176956
+      Light_Ball_1: -1076785712
+      Light_Ball_2: 573205570
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

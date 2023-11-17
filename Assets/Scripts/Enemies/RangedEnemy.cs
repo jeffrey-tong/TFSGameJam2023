@@ -21,6 +21,8 @@ public class RangedEnemy : MonoBehaviour
     private Rigidbody2D rb;
     private Transform player;
 
+    public SpriteRenderer spriteRenderer;
+
     [Header("Bullet Data")]
     [SerializeField] private GameObject greenProjectilePrefab;
     [SerializeField] private GameObject purpleProjectilePrefab;
@@ -64,6 +66,8 @@ public class RangedEnemy : MonoBehaviour
         {
             Debug.Log("Player not found");
         }
+        Vector3 direction = player.position - transform.position;
+        FlipSprite(direction);
 
         moveSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
         if(attackRangeBuffer <= 0) 
@@ -82,9 +86,11 @@ public class RangedEnemy : MonoBehaviour
     void Update()
     {
         Vector3 direction = player.position - transform.position;
+        FlipSprite(direction);
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance > attackRange)
@@ -96,7 +102,7 @@ public class RangedEnemy : MonoBehaviour
         {
             if (canAttack)
             {
-                StartAttack();
+                StartAttack(rotation);
                 StartCoroutine(AttackCooldown());
             }
         }
@@ -109,13 +115,13 @@ public class RangedEnemy : MonoBehaviour
         direction.Normalize();
 
         // Move towards the player
-        transform.position += direction * moveSpeed * Time.deltaTime;
+        //transform.position += direction * moveSpeed * Time.deltaTime;
     }
 
-    void StartAttack()
+    void StartAttack(Quaternion rotation)
     {
         AudioManager.Instance.Play("EnemyShoot");
-        GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+        GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoint.transform.position, rotation);
         //Set projectile layer = to enemy layer
         projectileInstance.layer = currentLayer;
     }
@@ -134,6 +140,24 @@ public class RangedEnemy : MonoBehaviour
             Destroy(collision.gameObject);
             spawner.EnemyDestroyed();
             Destroy(gameObject);
+        }
+    }
+
+    private void FlipSprite(Vector3 direction)
+    {
+        if (direction.x < 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = -1;
+            transform.localScale = scale;
+            //spriteRenderer.flipX = true;
+        }
+        else if (direction.x > 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = 1;
+            transform.localScale = scale;
+            //spriteRenderer.flipX = false;
         }
     }
 }

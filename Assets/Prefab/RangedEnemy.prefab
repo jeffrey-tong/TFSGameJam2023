@@ -115,6 +115,7 @@ MonoBehaviour:
   attackRangeBuffer: 1
   minAttackSpeed: 1
   maxAttackSpeed: 2.5
+  spriteRenderer: {fileID: 8245614473430460460}
   greenProjectilePrefab: {fileID: 1705869798285036531, guid: 55d10532fbf8f40378c800e62299a54d, type: 3}
   purpleProjectilePrefab: {fileID: 4806838366507493363, guid: a952362b1c26f4f4cb89d751517716dd, type: 3}
   projectileSpawnPoint: {fileID: 7264862181425218448}
@@ -207,6 +208,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8849900315454720820, guid: 0abc93d3b55af1649a0a1b5835166f22, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -215,5 +220,10 @@ PrefabInstance:
 --- !u!4 &7857342787877657964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8849900315454720820, guid: 0abc93d3b55af1649a0a1b5835166f22, type: 3}
+  m_PrefabInstance: {fileID: 1719190677703038552}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8245614473430460460 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7328909641658891892, guid: 0abc93d3b55af1649a0a1b5835166f22, type: 3}
   m_PrefabInstance: {fileID: 1719190677703038552}
   m_PrefabAsset: {fileID: 0}

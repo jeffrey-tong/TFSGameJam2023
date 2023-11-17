@@ -39,6 +39,8 @@ public class MeleeEnemy : MonoBehaviour
         if(player == null){
             Debug.Log("Player not found");
         }
+        Vector3 direction = player.position - transform.position;
+        FlipSprite(direction);
 
         moveSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
     }
@@ -49,6 +51,7 @@ public class MeleeEnemy : MonoBehaviour
         if(player != null)
         {
             Vector3 direction = player.position - transform.position;
+            FlipSprite(direction);
             direction.Normalize();
 
             transform.position += direction * moveSpeed * Time.deltaTime;
@@ -80,5 +83,23 @@ public class MeleeEnemy : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    private void FlipSprite(Vector3 direction)
+    {
+        if (direction.x < 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = -1;
+            transform.localScale = scale;
+            //spriteRenderer.flipX = true;
+        }
+        else if (direction.x > 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = 1;
+            transform.localScale = scale;
+            //spriteRenderer.flipX = false;
+        }
     }
 }

@@ -24,6 +24,9 @@ public class MageEnemy : MonoBehaviour
     [SerializeField] private GameObject greenProjectilePrefab;
     [SerializeField] private GameObject purpleProjectilePrefab;
     [SerializeField] private GameObject[] projectileSpawnPoints;
+
+    public SpriteRenderer spriteRenderer;
+
     private float projectileSpeed;
     public float minProjSpeed = 5.0f;
     public float maxProjSpeed = 10.0f;
@@ -64,6 +67,8 @@ public class MageEnemy : MonoBehaviour
             Debug.Log("Player not found");
         }
 
+        Vector3 direction = player.position - transform.position;
+        FlipSprite(direction);
 
         moveSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
         if (attackRange <= 0)
@@ -85,9 +90,11 @@ public class MageEnemy : MonoBehaviour
     void Update()
     {
         Vector3 direction = player.position - transform.position;
+        FlipSprite(direction);
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance > attackRange)
@@ -103,7 +110,7 @@ public class MageEnemy : MonoBehaviour
         {
             if (canAttack)
             {
-                StartAttack();
+                StartAttack(rotation);
                 StartCoroutine(AttackCooldown());
             }
         }  
@@ -127,12 +134,12 @@ public class MageEnemy : MonoBehaviour
     }
 
 
-    void StartAttack()
+    void StartAttack(Quaternion rotation)
     {
         AudioManager.Instance.Play("ShootMage");
         for (int i=0; i<projectileSpawnPoints.Length; i++)
         {
-            GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoints[i].transform.position, projectileSpawnPoints[i].transform.rotation);
+            GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoints[i].transform.position,rotation);
             //Set projectile layer = to enemy layer
             projectileInstance.layer = currentLayer;
         }
@@ -152,6 +159,24 @@ public class MageEnemy : MonoBehaviour
             Destroy(collision.gameObject);
             spawner.EnemyDestroyed();
             Destroy(gameObject);
+        }
+    }
+
+    private void FlipSprite(Vector3 direction)
+    {
+        if (direction.x < 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = 1;
+            transform.localScale = scale;
+            //spriteRenderer.flipX = true;
+        }
+        else if (direction.x > 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = -1;
+            transform.localScale = scale;
+            //spriteRenderer.flipX = false;
         }
     }
 }
