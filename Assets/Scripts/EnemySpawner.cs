@@ -52,7 +52,7 @@ public class EnemySpawner : MonoBehaviour
 
     void RespawnEnemy(int index)
     {
-        Vector2 randomViewportPosition = new Vector2(Random.Range(0f, 1f), Random.Range(0f, 1f));
+        Vector2 randomViewportPosition = new Vector2(Random.Range(0.15f, 0.85f), Random.Range(0.1f, 0.9f));
         Vector3 randomWorldPosition = Camera.main.ViewportToWorldPoint(new Vector3(randomViewportPosition.x, randomViewportPosition.y, 10f));
 
         int enemyIndex = Random.Range(0, enemyPrefabs.Length);
