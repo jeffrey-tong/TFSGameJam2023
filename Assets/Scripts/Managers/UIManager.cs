@@ -86,6 +86,8 @@ public class UIManager : MonoBehaviour
     public void StartGame()
     {
         score = 0;
+        Time.timeScale = 1;
+        isPaused = false;
         if(scoreText != null)
         {
             scoreText.text = "Score: " + score.ToString();
