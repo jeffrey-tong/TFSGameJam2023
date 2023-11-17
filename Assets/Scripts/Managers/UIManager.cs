@@ -108,7 +108,7 @@ public class UIManager : MonoBehaviour
 
     public void GameOver()
     {
-        // to add
+        gameOverPanel.SetActive(true);
     }
 
     public void Credits()

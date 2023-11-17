@@ -224,8 +224,12 @@ public class PlayerController : MonoBehaviour
     private void HandleDie()
     {
         animator.SetTrigger("IsDead");
-        
+        UIManager.Instance.GameOver();
+
+
     }
+
+
 
     public void UpdateHealthBar(float curenthealth)
     {
