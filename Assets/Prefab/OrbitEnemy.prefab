@@ -228,8 +228,8 @@ MonoBehaviour:
   minMoveSpeed: 12
   maxMoveSpeed: 25
   orbitRadius: 10
-  minAttackSpeed: 1
-  maxAttackSpeed: 3
+  minAttackSpeed: 0.7
+  maxAttackSpeed: 2.5
   projectileSpawnPoint: {fileID: 1695304496855767898}
   greenProjectilePrefab: {fileID: 5938100456915277173, guid: e9d82860989744ebb912bb07531e5072, type: 3}
   purpleProjectilePrefab: {fileID: 7068190179729369226, guid: 9c3996afdb6034cf69c37892fca6fbf6, type: 3}

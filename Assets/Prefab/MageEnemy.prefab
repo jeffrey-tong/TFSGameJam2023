@@ -113,8 +113,8 @@ MonoBehaviour:
   maxMoveSpeed: 3
   attackRange: 15
   attackRangeBuffer: 1
-  minAttackSpeed: 3.5
-  maxAttackSpeed: 4.5
+  minAttackSpeed: 2.5
+  maxAttackSpeed: 4
   greenProjectilePrefab: {fileID: 8812811745457465511, guid: 1220d3a9c808d479abf62cf5ca5274fd, type: 3}
   purpleProjectilePrefab: {fileID: 2471528840375977880, guid: 207f7760d514d4c0782ecf0898c76679, type: 3}
   projectileSpawnPoints:

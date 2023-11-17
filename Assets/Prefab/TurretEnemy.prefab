@@ -120,8 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36933efca9f2864d9514574e0b3ba2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAttackSpeed: 1
-  maxAttackSpeed: 3
+  minAttackSpeed: 0.75
+  maxAttackSpeed: 2.5
   minProjSpeed: 5
   maxProjSpeed: 15
   greenProjectilePrefab: {fileID: 1705869798285036531, guid: 55d10532fbf8f40378c800e62299a54d, type: 3}

@@ -113,8 +113,8 @@ MonoBehaviour:
   minMoveSpeed: 2
   maxMoveSpeed: 10
   attackRangeBuffer: 1
-  minAttackSpeed: 1
-  maxAttackSpeed: 2.5
+  minAttackSpeed: 0.75
+  maxAttackSpeed: 2
   spriteRenderer: {fileID: 8245614473430460460}
   greenProjectilePrefab: {fileID: 1705869798285036531, guid: 55d10532fbf8f40378c800e62299a54d, type: 3}
   purpleProjectilePrefab: {fileID: 4806838366507493363, guid: a952362b1c26f4f4cb89d751517716dd, type: 3}
