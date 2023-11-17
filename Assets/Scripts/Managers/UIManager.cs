@@ -20,7 +20,6 @@ public class UIManager : MonoBehaviour
 
     [Header("Panel Components")]
     [SerializeField] private GameObject pausePanel;
-    [SerializeField] private GameObject settingsPanel;
     [SerializeField] public GameObject gameOverPanel;
     [SerializeField] private GameObject creditsPanel;
     [SerializeField] public GameObject scorePanel;
@@ -94,18 +93,10 @@ public class UIManager : MonoBehaviour
         
         SceneManager.LoadScene(1);
     }
-
-    private void GameSettings()
-    {
-        AudioManager.Instance.Play("Select");
-        settingsPanel.SetActive(true);
-        isActive = true;
-    }
-
     private void BackToPauseMenu()
     {
         AudioManager.Instance.Play("Select");
-        settingsPanel.SetActive(false);
+        creditsPanel.SetActive(false);
     }
 
     public void BackToMainMenu()
@@ -138,7 +129,6 @@ public class UIManager : MonoBehaviour
         {
             AudioManager.Instance.Play("Select");
             creditsPanel.SetActive(false);
-            settingsPanel.SetActive(false);
             isActive = false;
         }
     }
@@ -157,6 +147,7 @@ public class UIManager : MonoBehaviour
 
         else
         {
+            pausePanel.SetActive(false);
             AudioManager.Instance.Play("Select");
             Time.timeScale = 1;
             //scorePanel.SetActive(true);
