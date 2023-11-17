@@ -58,6 +58,9 @@ public class TurretEnemy : MonoBehaviour
             Vector3 scale = transform.localScale;
             scale.x *= -1;
             transform.localScale = scale;
+            Vector3 newRotation = projectileSpawnPoint.transform.rotation.eulerAngles;
+            newRotation.z = 180f;
+            projectileSpawnPoint.transform.rotation = Quaternion.Euler(newRotation);
         }
         spawner = GameObject.FindObjectOfType<EnemySpawner>();
         StartCoroutine(AttackCooldown());

@@ -94,6 +94,7 @@ public class MageEnemy : MonoBehaviour
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         float distance = Vector3.Distance(transform.position, player.position);
@@ -140,6 +141,7 @@ public class MageEnemy : MonoBehaviour
         for (int i=0; i<projectileSpawnPoints.Length; i++)
         {
             GameObject projectileInstance = Instantiate(currentProjectilePrefab, projectileSpawnPoints[i].transform.position,rotation);
+            projectileSpawnPoints[i].transform.rotation = rotation;
             //Set projectile layer = to enemy layer
             projectileInstance.layer = currentLayer;
         }
@@ -167,14 +169,14 @@ public class MageEnemy : MonoBehaviour
         if (direction.x < 0)
         {
             Vector3 scale = transform.localScale;
-            scale.x = 1;
+            scale.x = -1;
             transform.localScale = scale;
             //spriteRenderer.flipX = true;
         }
         else if (direction.x > 0)
         {
             Vector3 scale = transform.localScale;
-            scale.x = -1;
+            scale.x = 1;
             transform.localScale = scale;
             //spriteRenderer.flipX = false;
         }

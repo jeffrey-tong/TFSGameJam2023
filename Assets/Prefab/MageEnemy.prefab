@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5971202754176301148, guid: d481a3f46cb7e6045871d605b05267bf, type: 3}
       propertyPath: m_FlipX
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6094688735614939677, guid: d481a3f46cb7e6045871d605b05267bf, type: 3}
       propertyPath: m_RootOrder

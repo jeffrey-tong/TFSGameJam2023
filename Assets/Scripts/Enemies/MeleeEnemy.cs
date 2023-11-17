@@ -60,18 +60,9 @@ public class MeleeEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (gameObject.layer == LayerMask.NameToLayer("GreenDimension") && collision.gameObject.layer == LayerMask.NameToLayer("GreenDimension") && collision.gameObject.CompareTag("Player"))
-        {
-            Health playerHealth = collision.gameObject.GetComponent<Health>();
-            playerHealth.DealDamage(damage);
-            Destroy(gameObject);
-        }
-        else if (gameObject.layer == LayerMask.NameToLayer("PurpleDimension") && collision.gameObject.layer == LayerMask.NameToLayer("PurpleDimension") && collision.gameObject.CompareTag("Player"))
-        {
-            Health playerHealth = collision.gameObject.GetComponent<Health>();
-            playerHealth.DealDamage(damage);
-            Destroy(gameObject);
-        }
+        Health playerHealth = collision.gameObject.GetComponent<Health>();
+        playerHealth.DealDamage(damage);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
