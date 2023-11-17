@@ -119,6 +119,7 @@ MonoBehaviour:
   greenProjectilePrefab: {fileID: 1705869798285036531, guid: 55d10532fbf8f40378c800e62299a54d, type: 3}
   purpleProjectilePrefab: {fileID: 4806838366507493363, guid: a952362b1c26f4f4cb89d751517716dd, type: 3}
   projectileSpawnPoint: {fileID: 7264862181425218448}
+  damageParticlePrefab: {fileID: 1339124478685776, guid: 983ffc7b1f02f0d46a330ab4d104d17d, type: 3}
   minProjSpeed: 8
   maxProjSpeed: 14
 --- !u!1 &7264862181425218448

@@ -127,6 +127,7 @@ MonoBehaviour:
   greenProjectilePrefab: {fileID: 1705869798285036531, guid: 55d10532fbf8f40378c800e62299a54d, type: 3}
   purpleProjectilePrefab: {fileID: 4806838366507493363, guid: a952362b1c26f4f4cb89d751517716dd, type: 3}
   projectileSpawnPoint: {fileID: 8487629218001994422}
+  damageParticlePrefab: {fileID: 1780996139795400, guid: df365974c854a33438e5aea62ca4b975, type: 3}
 --- !u!1 &8487629218001994422
 GameObject:
   m_ObjectHideFlags: 0

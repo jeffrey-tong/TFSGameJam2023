@@ -123,6 +123,7 @@ MonoBehaviour:
   - {fileID: 3965962199572983147}
   - {fileID: 5787781785732997724}
   - {fileID: 7591859817214419108}
+  damageParticlePrefab: {fileID: 1767841913861676, guid: 7e33fe33aff4f49449f51ed88f138e9c, type: 3}
   spriteRenderer: {fileID: 5378333036968592196}
   minProjSpeed: 5
   maxProjSpeed: 10

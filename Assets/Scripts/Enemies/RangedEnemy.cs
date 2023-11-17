@@ -27,6 +27,10 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] private GameObject greenProjectilePrefab;
     [SerializeField] private GameObject purpleProjectilePrefab;
     [SerializeField] private GameObject projectileSpawnPoint;
+
+    [Header("Particles")]
+    [SerializeField] private GameObject damageParticlePrefab;
+
     private float projectileSpeed;
     public float minProjSpeed = 8.0f;
     public float maxProjSpeed = 14.0f;
@@ -138,6 +142,10 @@ public class RangedEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            GameObject damageParticles = Instantiate(damageParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(damageParticles, 2.0f);
+
+            UIManager.Instance.UpdateScoreDisplay();
             Destroy(collision.gameObject);
             spawner.EnemyDestroyed();
             Destroy(gameObject);

@@ -25,6 +25,9 @@ public class MageEnemy : MonoBehaviour
     [SerializeField] private GameObject purpleProjectilePrefab;
     [SerializeField] private GameObject[] projectileSpawnPoints;
 
+    [Header("Particles")]
+    [SerializeField] private GameObject damageParticlePrefab;
+
     public SpriteRenderer spriteRenderer;
 
     private float projectileSpeed;
@@ -158,6 +161,10 @@ public class MageEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            GameObject damageParticles = Instantiate(damageParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(damageParticles, 2.0f);
+
+            UIManager.Instance.UpdateScoreDisplay();
             Destroy(collision.gameObject);
             spawner.EnemyDestroyed();
             Destroy(gameObject);

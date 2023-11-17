@@ -13,6 +13,9 @@ public class MeleeEnemy : MonoBehaviour
     private int currentLayer;
     public int damage = 10;
 
+    [Header("Particles")]
+    [SerializeField] private GameObject damageParticlePrefab;
+
     private void Awake()
     {
         circleCollider2D = GetComponent<CircleCollider2D>();
@@ -69,6 +72,10 @@ public class MeleeEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            GameObject damageParticles = Instantiate(damageParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(damageParticles, 2.0f);
+
+            UIManager.Instance.UpdateScoreDisplay();
             Destroy(collision.gameObject);
             spawner.EnemyDestroyed();
             Destroy(gameObject);

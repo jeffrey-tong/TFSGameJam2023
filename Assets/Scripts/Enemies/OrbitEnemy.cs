@@ -23,6 +23,10 @@ public class OrbitEnemy : MonoBehaviour
     [SerializeField] private GameObject projectileSpawnPoint;
     [SerializeField] private GameObject greenProjectilePrefab;
     [SerializeField] private GameObject purpleProjectilePrefab;
+
+    [Header("Particles")]
+    [SerializeField] private GameObject damageParticlePrefab;
+
     private float projectileSpeed;
     public float minProjSpeed = 8f;
     public float maxProjSpeed = 15f;
@@ -139,6 +143,10 @@ public class OrbitEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            GameObject damageParticles = Instantiate(damageParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(damageParticles, 2.0f);
+
+            UIManager.Instance.UpdateScoreDisplay();
             Destroy(collision.gameObject);
             spawner.EnemyDestroyed();
             Destroy(gameObject);

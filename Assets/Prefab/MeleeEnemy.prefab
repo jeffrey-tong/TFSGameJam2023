@@ -84,6 +84,7 @@ MonoBehaviour:
   minMoveSpeed: 2
   maxMoveSpeed: 5
   damage: 10
+  damageParticlePrefab: {fileID: 1924400220764400, guid: b44a4dd7ccb8bc24fb1e8e941eee8eac, type: 3}
 --- !u!1001 &8777288927858171825
 PrefabInstance:
   m_ObjectHideFlags: 0

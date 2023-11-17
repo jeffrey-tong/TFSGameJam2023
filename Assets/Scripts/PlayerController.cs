@@ -40,6 +40,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dimensionSwitchRate;
     [SerializeField] private Slider dimensionSlider;
 
+    [Header("Particles")]
+    [SerializeField] private GameObject damageParticlePrefab;
+
     private float horizontalInput;
     private float verticalInput;
     private Vector2 playerMovement;
@@ -47,6 +50,7 @@ public class PlayerController : MonoBehaviour
     private float lastBulletFiredTime;
     private float dimensionSwitchCooldownTime;
     private Vector2 shootDirection;
+    private bool isDead;
 
     private void Start()
     {
@@ -81,6 +85,7 @@ public class PlayerController : MonoBehaviour
         isAnotherDimension = false;
 
         dimensionSwitchCooldownTime = 3.0f;
+        isDead = false;
 
     }
 
@@ -92,6 +97,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (isDead) return;
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
@@ -124,6 +131,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() 
     {
+        if (isDead) return;
         Move();
         UpdateDimensionBar(dimensionSwitchCooldownTime);
     }
@@ -181,21 +189,21 @@ public class PlayerController : MonoBehaviour
 
     private void SplitDimension()
     {
-        if (!isAnotherDimension) 
+        if (isAnotherDimension) 
         { 
-            dimensionMap1.SetActive(false);
-            dimensionMap2.SetActive(true);
+            dimensionMap1.SetActive(true);
+            dimensionMap2.SetActive(false);
             gameObject.layer = LayerMask.NameToLayer("PurpleDimension");
             light2D.color = Color.magenta;
-            isAnotherDimension = true;
+            isAnotherDimension = false;
         }
         else
         {
-            dimensionMap1.SetActive(true);
-            dimensionMap2.SetActive(false);
+            dimensionMap1.SetActive(false);
+            dimensionMap2.SetActive(true);
             gameObject.layer = LayerMask.NameToLayer("GreenDimension");
             light2D.color = Color.green;
-            isAnotherDimension = false;
+            isAnotherDimension = true;
         }
     }
 
@@ -214,15 +222,24 @@ public class PlayerController : MonoBehaviour
 
     private void HandleTakeDamage()
     {
+        
         AudioManager.Instance.Play("Hit");
+
+        GameObject damageParticles = Instantiate(damageParticlePrefab, transform.position, Quaternion.identity);
+        Destroy(damageParticles, 1.0f);
+
+        rb.AddForce(transform.position * 400, ForceMode2D.Force);
+
         UpdateHealthBar(health.health);
         shake.CamShake();
+
         // spawn particles
       
     }
 
     private void HandleDie()
     {
+        isDead = true;
         animator.SetTrigger("IsDead");
         UIManager.Instance.GameOver();
     }
