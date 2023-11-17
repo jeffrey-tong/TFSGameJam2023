@@ -102,6 +102,8 @@ public class UIManager : MonoBehaviour
     public void BackToMainMenu()
     {
         AudioManager.Instance.Play("Select");
+        Time.timeScale = 1;
+        UnpauseBackgorundMusic();
         SceneManager.LoadScene(0);
     }
     public void GameQuit()
